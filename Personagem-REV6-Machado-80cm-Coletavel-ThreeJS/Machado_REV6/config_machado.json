@@ -1,0 +1,23 @@
+{
+  "itemId": "machado_enferrujado",
+  "axeLengthM": 0.8,
+  "startsEquipped": false,
+  "clipMap": {
+    "Running": "Running_Machado",
+    "Walking": "Walking_Machado",
+    "_01a17993_5941_740d_a212_2815e139919a": "_01a17993_5941_740d_a212_2815e139919a_Machado",
+    "_01a18db3_0c5f_71a4_b3b9_c9119504c268": "_01a18db3_0c5f_71a4_b3b9_c9119504c268_Machado",
+    "Attack": "Attack_Machado",
+    "Basic_Jump": "Basic_Jump_Machado",
+    "Double_Combo_Attack": "Double_Combo_Attack_Machado",
+    "Run_and_Shoot": "Run_and_Shoot_Machado",
+    "Triple_Combo_Attack": "Triple_Combo_Attack_Machado",
+    "open_door_4": "open_door_4_Machado"
+  },
+  "loopClips": [
+    "Running",
+    "Walking",
+    "_01a17993_5941_740d_a212_2815e139919a",
+    "Run_and_Shoot"
+  ]
+}
