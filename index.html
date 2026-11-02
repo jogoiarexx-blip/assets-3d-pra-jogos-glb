@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="Biblioteca de modelos GLB, imagens e pacotes de assets para jogos. Pré-visualização 3D, categorias e downloads.">
+  <title>Rexx Assets — Biblioteca 3D</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="./" aria-label="Início"><span class="brandmark">⬡</span><span>REXX <b>ASSETS</b><small>Biblioteca para jogos</small></span></a>
+  <a class="github" href="https://github.com/jogoiarexx-blip/assets-3d-pra-jogos-glb" target="_blank" rel="noopener noreferrer">Ver repositório ↗</a>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <span class="eyebrow">MODELOS 3D · IMAGENS · PACOTES</span>
+    <h1>Seus assets, <em>organizados.</em></h1>
+    <p>Escolha uma pasta, encontre seu arquivo e visualize os modelos GLB em 3D antes de baixar. Gire, aproxime e inspecione as texturas sem instalar nada.</p>
+    <div class="stats"><span><strong id="countAll">—</strong> arquivos</span><span><strong id="countGlb">—</strong> modelos GLB</span><span><strong id="countCat">—</strong> pastas</span></div>
+  </section>
+  <section class="catalog" aria-labelledby="catalogTitle">
+    <div class="sectionbar"><div><p class="eyebrow">CATÁLOGO</p><h2 id="catalogTitle">Explore a biblioteca</h2></div><label class="searchbox"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar modelo, personagem, carro…" autocomplete="off" aria-label="Buscar arquivos"></label></div>
+    <div id="categories" class="categories" aria-label="Filtrar por pasta"></div>
+    <div class="toolbar"><span id="results" role="status">Carregando arquivos…</span><label>Mostrar <select id="kind" aria-label="Tipo de arquivo"><option value="all">Todos os tipos</option><option value="glb">Modelos 3D (GLB)</option><option value="image">Imagens</option><option value="archive">Pacotes (ZIP/RAR)</option></select></label></div>
+    <div id="grid" class="grid" aria-live="polite"></div>
+    <p class="notice">As prévias GLB carregam somente quando você abre um modelo, para economizar internet e memória. Os arquivos originais continuam disponíveis na raiz do repositório para preservar links antigos.</p>
+  </section>
+</main>
+<dialog id="viewer" aria-label="Visualizador de asset">
+  <div class="modalbar"><div><span id="viewCategory" class="eyebrow"></span><h2 id="viewName"></h2></div><button id="close" class="close" type="button" aria-label="Fechar">✕</button></div>
+  <div id="viewport" class="viewport"></div>
+  <p id="viewHint" class="hint"></p>
+  <div class="modalfooter"><span id="viewInfo"></span><div class="actions"><button id="copy" class="outline" type="button">Copiar link</button><a id="download" class="primary" download>Baixar arquivo ↓</a></div></div>
+</dialog>
+<footer>Feito para jogos • GLB, imagens e pacotes organizados por categoria</footer>
+</body>
+</html>

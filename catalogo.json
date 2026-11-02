@@ -1,0 +1,470 @@
+[
+  {
+    "name": "machado_coletavel_80cm.glb",
+    "path": "assets/armas/machado_coletavel_80cm.glb",
+    "legacyPath": "Personagem-REV6-Machado-80cm-Coletavel-ThreeJS/Machado_REV6/machado_coletavel_80cm.glb",
+    "category": "armas",
+    "ext": "glb",
+    "bytes": 10025076,
+    "broken": false
+  },
+  {
+    "name": "Chicago_Original_PS1_Setores_GLTF_Texturas_Visualizador.zip",
+    "path": "assets/cenarios/Chicago_Original_PS1_Setores_GLTF_Texturas_Visualizador.zip",
+    "legacyPath": "Chicago_Original_PS1_Setores_GLTF_Texturas_Visualizador.zip",
+    "category": "cenarios",
+    "ext": "zip",
+    "bytes": 18261699,
+    "broken": false
+  },
+  {
+    "name": "mapa_chicago_driver2.webp",
+    "path": "assets/cenarios/mapa_chicago_driver2.webp",
+    "legacyPath": "mapa_chicago_driver2.webp",
+    "category": "cenarios",
+    "ext": "webp",
+    "bytes": 483124,
+    "broken": false
+  },
+  {
+    "name": "Meshy_AI_Old_Wooden_Coffin_1101130144_texture.glb",
+    "path": "assets/cenarios/Meshy_AI_Old_Wooden_Coffin_1101130144_texture.glb",
+    "legacyPath": "Meshy_AI_Old_Wooden_Coffin_1101130144_texture.glb",
+    "category": "cenarios",
+    "ext": "glb",
+    "bytes": 7652664,
+    "broken": false
+  },
+  {
+    "name": "bruxa do 71.glb",
+    "path": "assets/chaves/bruxa do 71.glb",
+    "legacyPath": "bruxa do 71.glb",
+    "category": "chaves",
+    "ext": "glb",
+    "bytes": 14668700,
+    "broken": false
+  },
+  {
+    "name": "Chaves_Esqueleto_Rig_22_Ossos.zip",
+    "path": "assets/chaves/Chaves_Esqueleto_Rig_22_Ossos.zip",
+    "legacyPath": "Chaves_Esqueleto_Rig_22_Ossos.zip",
+    "category": "chaves",
+    "ext": "zip",
+    "bytes": 6551862,
+    "broken": false
+  },
+  {
+    "name": "chiquinha.glb",
+    "path": "assets/chaves/chiquinha.glb",
+    "legacyPath": "chiquinha.glb",
+    "category": "chaves",
+    "ext": "glb",
+    "bytes": 10986296,
+    "broken": false
+  },
+  {
+    "name": "seu madruga.zip",
+    "path": "assets/chaves/seu madruga.zip",
+    "legacyPath": "seu madruga.zip",
+    "category": "chaves",
+    "ext": "zip",
+    "bytes": 20469111,
+    "broken": false
+  },
+  {
+    "name": "Aranha_sombria_5_animacoes_PACOTE.zip",
+    "path": "assets/criaturas/Aranha_sombria_5_animacoes_PACOTE.zip",
+    "legacyPath": "Aranha_sombria_5_animacoes_PACOTE.zip",
+    "category": "criaturas",
+    "ext": "zip",
+    "bytes": 12258792,
+    "broken": false
+  },
+  {
+    "name": "cachorro 3.glb",
+    "path": "assets/criaturas/cachorro 3.glb",
+    "legacyPath": "cachorro 3.glb",
+    "category": "criaturas",
+    "ext": "glb",
+    "bytes": 14220480,
+    "broken": false
+  },
+  {
+    "name": "goblin.glb",
+    "path": "assets/criaturas/goblin.glb",
+    "legacyPath": "goblin.glb",
+    "category": "criaturas",
+    "ext": "glb",
+    "bytes": 12991712,
+    "broken": false
+  },
+  {
+    "name": "Meshy_AI_Clown_Cream_Carnage_1022153923_texture.glb",
+    "path": "assets/criaturas/Meshy_AI_Clown_Cream_Carnage_1022153923_texture.glb",
+    "legacyPath": "Meshy_AI_Clown_Cream_Carnage_1022153923_texture.glb",
+    "category": "criaturas",
+    "ext": "glb",
+    "bytes": 23764204,
+    "broken": false
+  },
+  {
+    "name": "Meshy_AI_Shambling_Schoolyard__1021205901_texture.glb",
+    "path": "assets/criaturas/Meshy_AI_Shambling_Schoolyard__1021205901_texture.glb",
+    "legacyPath": "Meshy_AI_Shambling_Schoolyard__1021205901_texture.glb",
+    "category": "criaturas",
+    "ext": "glb",
+    "bytes": 8656596,
+    "broken": false
+  },
+  {
+    "name": "pastor alemao.glb",
+    "path": "assets/criaturas/pastor alemao.glb",
+    "legacyPath": "pastor alemao.glb",
+    "category": "criaturas",
+    "ext": "glb",
+    "bytes": 15800904,
+    "broken": false
+  },
+  {
+    "name": "Zumbi_Animado_REV3_Completo.zip",
+    "path": "assets/criaturas/Zumbi_Animado_REV3_Completo.zip",
+    "legacyPath": "Zumbi_Animado_REV3_Completo.zip",
+    "category": "criaturas",
+    "ext": "zip",
+    "bytes": 16489956,
+    "broken": false
+  },
+  {
+    "name": "Dinossauro_Animacoes_Leve.zip",
+    "path": "assets/dinossauros/Dinossauro_Animacoes_Leve.zip",
+    "legacyPath": "Dinossauro_Animacoes_Leve.zip",
+    "category": "dinossauros",
+    "ext": "zip",
+    "bytes": 6281945,
+    "broken": false
+  },
+  {
+    "name": "raptor.glb",
+    "path": "assets/dinossauros/raptor.glb",
+    "legacyPath": "raptor.glb",
+    "category": "dinossauros",
+    "ext": "glb",
+    "bytes": 12543244,
+    "broken": false
+  },
+  {
+    "name": "regina graficos melhores.glb",
+    "path": "assets/dinossauros/regina graficos melhores.glb",
+    "legacyPath": "regina graficos melhores.glb",
+    "category": "dinossauros",
+    "ext": "glb",
+    "bytes": 14952920,
+    "broken": false
+  },
+  {
+    "name": "regina pronta pro dino.glb",
+    "path": "assets/dinossauros/regina pronta pro dino.glb",
+    "legacyPath": "regina pronta pro dino.glb",
+    "category": "dinossauros",
+    "ext": "glb",
+    "bytes": 14253752,
+    "broken": false
+  },
+  {
+    "name": "regina.glb",
+    "path": "assets/dinossauros/regina.glb",
+    "legacyPath": "regina.glb",
+    "category": "dinossauros",
+    "ext": "glb",
+    "bytes": 14464288,
+    "broken": false
+  },
+  {
+    "name": "tiranossauro.glb",
+    "path": "assets/dinossauros/tiranossauro.glb",
+    "legacyPath": "tiranossauro.glb",
+    "category": "dinossauros",
+    "ext": "glb",
+    "bytes": 6625404,
+    "broken": false
+  },
+  {
+    "name": "Astrid.glb",
+    "path": "assets/dragoes/Astrid.glb",
+    "legacyPath": "Astrid.glb",
+    "category": "dragoes",
+    "ext": "glb",
+    "bytes": 14370212,
+    "broken": false
+  },
+  {
+    "name": "cabeça de vento (2).glb",
+    "path": "assets/dragoes/cabeça de vento (2).glb",
+    "legacyPath": "cabeça de vento (2).glb",
+    "category": "dragoes",
+    "ext": "glb",
+    "bytes": 10329964,
+    "broken": false
+  },
+  {
+    "name": "forja.glb",
+    "path": "assets/dragoes/forja.glb",
+    "legacyPath": "forja.glb",
+    "category": "dragoes",
+    "ext": "glb",
+    "bytes": 14428820,
+    "broken": false
+  },
+  {
+    "name": "furia da noite.glb",
+    "path": "assets/dragoes/furia da noite.glb",
+    "legacyPath": "furia da noite.glb",
+    "category": "dragoes",
+    "ext": "glb",
+    "bytes": 10122712,
+    "broken": false
+  },
+  {
+    "name": "Furia_da_Luz_Pacote_8_Animacoes.zip",
+    "path": "assets/dragoes/Furia_da_Luz_Pacote_8_Animacoes.zip",
+    "legacyPath": "Furia_da_Luz_Pacote_8_Animacoes.zip",
+    "category": "dragoes",
+    "ext": "zip",
+    "bytes": 10163350,
+    "broken": false
+  },
+  {
+    "name": "Furia_da_Noite_Pacote_8_Animacoes.zip",
+    "path": "assets/dragoes/Furia_da_Noite_Pacote_8_Animacoes.zip",
+    "legacyPath": "Furia_da_Noite_Pacote_8_Animacoes.zip",
+    "category": "dragoes",
+    "ext": "zip",
+    "bytes": 8502035,
+    "broken": false
+  },
+  {
+    "name": "Meshy_AI_Vallisneria_1101183850_texture.glb",
+    "path": "assets/natureza/Meshy_AI_Vallisneria_1101183850_texture.glb",
+    "legacyPath": "Meshy_AI_Vallisneria_1101183850_texture.glb",
+    "category": "natureza",
+    "ext": "glb",
+    "bytes": 18211284,
+    "broken": false
+  },
+  {
+    "name": "Don vito.glb",
+    "path": "assets/personagens/Don vito.glb",
+    "legacyPath": "Don vito.glb",
+    "category": "personagens",
+    "ext": "glb",
+    "bytes": 12842704,
+    "broken": false
+  },
+  {
+    "name": "guerreira apocaliptca.rar",
+    "path": "assets/personagens/guerreira apocaliptca.rar",
+    "legacyPath": "guerreira apocaliptca.rar",
+    "category": "personagens",
+    "ext": "rar",
+    "bytes": 22874453,
+    "broken": false
+  },
+  {
+    "name": "mailou.glb",
+    "path": "assets/personagens/mailou.glb",
+    "legacyPath": "mailou.glb",
+    "category": "personagens",
+    "ext": "glb",
+    "bytes": 12627708,
+    "broken": false
+  },
+  {
+    "name": "mendingo.glb",
+    "path": "assets/personagens/mendingo.glb",
+    "legacyPath": "mendingo.glb",
+    "category": "personagens",
+    "ext": "glb",
+    "bytes": 14373428,
+    "broken": false
+  },
+  {
+    "name": "menina.glb",
+    "path": "assets/personagens/menina.glb",
+    "legacyPath": "menina.glb",
+    "category": "personagens",
+    "ext": "glb",
+    "bytes": 12307880,
+    "broken": false
+  },
+  {
+    "name": "menino.glb",
+    "path": "assets/personagens/menino.glb",
+    "legacyPath": "menino.glb",
+    "category": "personagens",
+    "ext": "glb",
+    "bytes": 12367916,
+    "broken": false
+  },
+  {
+    "name": "Meshy_AI_The_Striped_Wanderer_1022141954_texture.glb",
+    "path": "assets/personagens/Meshy_AI_The_Striped_Wanderer_1022141954_texture.glb",
+    "legacyPath": "Meshy_AI_The_Striped_Wanderer_1022141954_texture.glb",
+    "category": "personagens",
+    "ext": "glb",
+    "bytes": 6404588,
+    "broken": false
+  },
+  {
+    "name": "Meshy_AI_Urban_Enforcer_All_Animations.glb",
+    "path": "assets/personagens/Meshy_AI_Urban_Enforcer_All_Animations.glb",
+    "legacyPath": "Meshy_AI_Urban_Enforcer_All_Animations.glb",
+    "category": "personagens",
+    "ext": "glb",
+    "bytes": 5850540,
+    "broken": false
+  },
+  {
+    "name": "mulher 2.glb",
+    "path": "assets/personagens/mulher 2.glb",
+    "legacyPath": "mulher 2.glb",
+    "category": "personagens",
+    "ext": "glb",
+    "bytes": 13508092,
+    "broken": false
+  },
+  {
+    "name": "mulher 3.glb",
+    "path": "assets/personagens/mulher 3.glb",
+    "legacyPath": "mulher 3.glb",
+    "category": "personagens",
+    "ext": "glb",
+    "bytes": 14101852,
+    "broken": false
+  },
+  {
+    "name": "Pedestre_Masculino_Driver2_Atirar_Com_Pistola.glb",
+    "path": "assets/personagens/Pedestre_Masculino_Driver2_Atirar_Com_Pistola.glb",
+    "legacyPath": "Pedestre_Masculino_Driver2_Atirar_Com_Pistola.glb",
+    "category": "personagens",
+    "ext": "glb",
+    "bytes": 5890592,
+    "broken": false
+  },
+  {
+    "name": "personagem animado.glb",
+    "path": "assets/personagens/personagem animado.glb",
+    "legacyPath": "personagem animado.glb",
+    "category": "personagens",
+    "ext": "glb",
+    "bytes": 15038356,
+    "broken": false
+  },
+  {
+    "name": "Tanner_Terno_Driver2_Mesmo_Rig_5_Animacoes.glb",
+    "path": "assets/personagens/Tanner_Terno_Driver2_Mesmo_Rig_5_Animacoes.glb",
+    "legacyPath": "Tanner_Terno_Driver2_Mesmo_Rig_5_Animacoes.glb",
+    "category": "personagens",
+    "ext": "glb",
+    "bytes": 6325612,
+    "broken": false
+  },
+  {
+    "name": "tanner.glb",
+    "path": "assets/personagens/tanner.glb",
+    "legacyPath": "tanner.glb",
+    "category": "personagens",
+    "ext": "glb",
+    "bytes": 8547108,
+    "broken": false
+  },
+  {
+    "name": "velho 2.glb",
+    "path": "assets/personagens/velho 2.glb",
+    "legacyPath": "velho 2.glb",
+    "category": "personagens",
+    "ext": "glb",
+    "bytes": 18787016,
+    "broken": false
+  },
+  {
+    "name": "velho cauvo.glb",
+    "path": "assets/personagens/velho cauvo.glb",
+    "legacyPath": "velho cauvo.glb",
+    "category": "personagens",
+    "ext": "glb",
+    "bytes": 11784988,
+    "broken": false
+  },
+  {
+    "name": "caminhonete velha.glb",
+    "path": "assets/veiculos/caminhonete velha.glb",
+    "legacyPath": "caminhonete velha.glb",
+    "category": "veiculos",
+    "ext": "glb",
+    "bytes": 25944236,
+    "broken": false
+  },
+  {
+    "name": "car police.glb",
+    "path": "assets/veiculos/car police.glb",
+    "legacyPath": "car police.glb",
+    "category": "veiculos",
+    "ext": "glb",
+    "bytes": 2,
+    "broken": true
+  },
+  {
+    "name": "carro_driver2_otimizado.glb",
+    "path": "assets/veiculos/carro_driver2_otimizado.glb",
+    "legacyPath": "carro_driver2_otimizado.glb",
+    "category": "veiculos",
+    "ext": "glb",
+    "bytes": 1592952,
+    "broken": false
+  },
+  {
+    "name": "fusca.glb",
+    "path": "assets/veiculos/fusca.glb",
+    "legacyPath": "fusca.glb",
+    "category": "veiculos",
+    "ext": "glb",
+    "bytes": 20711128,
+    "broken": false
+  },
+  {
+    "name": "kenney_car-kit.zip",
+    "path": "assets/veiculos/kenney_car-kit.zip",
+    "legacyPath": "kenney_car-kit.zip",
+    "category": "veiculos",
+    "ext": "zip",
+    "bytes": 3668013,
+    "broken": false
+  },
+  {
+    "name": "Meshy_AI_carro_Mercedes_SL_35_1102123157_texture.glb",
+    "path": "assets/veiculos/Meshy_AI_carro_Mercedes_SL_35_1102123157_texture.glb",
+    "legacyPath": "Meshy_AI_carro_Mercedes_SL_35_1102123157_texture.glb",
+    "category": "veiculos",
+    "ext": "glb",
+    "bytes": 12856612,
+    "broken": false
+  },
+  {
+    "name": "Meshy_AI_Vintage_Drive_1102074902_texture.glb",
+    "path": "assets/veiculos/Meshy_AI_Vintage_Drive_1102074902_texture.glb",
+    "legacyPath": "Meshy_AI_Vintage_Drive_1102074902_texture.glb",
+    "category": "veiculos",
+    "ext": "glb",
+    "bytes": 18722212,
+    "broken": false
+  },
+  {
+    "name": "onibus escolar.glb",
+    "path": "assets/veiculos/onibus escolar.glb",
+    "legacyPath": "onibus escolar.glb",
+    "category": "veiculos",
+    "ext": "glb",
+    "bytes": 2806984,
+    "broken": false
+  }
+]
