@@ -1,43 +1,40 @@
-# Rexx Assets — Biblioteca 3D
+# REXX Assets — biblioteca 3D
 
-A biblioteca agora tem um catálogo de visualização no navegador, filtros e modelos agrupados em pastas.
+[**Abrir o visualizador e a biblioteca**](https://jogoiarexx-blip.github.io/assets-3d-pra-jogos-glb/)
 
-**[Abrir a galeria e visualizador 3D](https://jogoiarexx-blip.github.io/assets-3d-pra-jogos-glb/)**
+## Organização
 
-## Pastas
+Os modelos e pacotes estão distribuídos em 9 categorias e 16 subpastas dentro de `assets/`. Os arquivos antigos na raiz e em `assets/<categoria>/<arquivo>` permanecem disponíveis, de modo que jogos existentes não perdem seus links. Os arquivos em novas pastas compartilham os mesmos objetos Git, sem duplicar conteúdo binário no histórico.
 
-| Pasta | Conteúdo |
-| --- | --- |
-| `assets/veiculos/` | Carros, caminhonete, Fusca, ônibus e kit de veículos |
-| `assets/chaves/` | Chaves, Chiquinha, Bruxa do 71, Seu Madruga |
-| `assets/dragoes/` | Astrid, Cabeça de Vento, Fúrias e personagem da forja |
-| `assets/dinossauros/` | Dinossauros, Regina e pacotes de animações |
-| `assets/personagens/` | Tanner, pedestres e outros personagens |
-| `assets/criaturas/` | Animais, zumbis, goblins e criaturas |
-| `assets/cenarios/` | Mapas, Chicago, caixão e cenários |
-| `assets/natureza/` | Plantas e natureza |
-| `assets/armas/` | Machado e itens |
+- `assets/armas/machados/` — 1 arquivos
+- `assets/cenarios/mapas/` — 2 arquivos
+- `assets/cenarios/objetos/` — 1 arquivos
+- `assets/chaves/personagens/` — 4 arquivos
+- `assets/criaturas/monstros/` — 5 arquivos
+- `assets/criaturas/animais/` — 2 arquivos
+- `assets/dinossauros/dinossauros/` — 3 arquivos
+- `assets/dinossauros/regina/` — 3 arquivos
+- `assets/dragoes/personagens/` — 3 arquivos
+- `assets/dragoes/dragoes/` — 3 arquivos
+- `assets/natureza/plantas/` — 1 arquivos
+- `assets/personagens/outros/` — 11 arquivos
+- `assets/personagens/driver-2/` — 5 arquivos
+- `assets/veiculos/utilitarios/` — 2 arquivos
+- `assets/veiculos/carros/` — 5 arquivos
+- `assets/veiculos/pacotes/` — 1 arquivos
 
-Entre em qualquer pasta `assets/categoria/` no GitHub para ver os arquivos. Acesse também `assets/categoria/` no site para abrir a galeria filtrada daquela pasta.
+## Prévia verdadeira
 
-## Visualizador
+Os cards mostram **imagens reais renderizadas a partir dos GLBs**, usando `model-viewer`. Como os arquivos são grandes, as miniaturas são geradas uma por vez quando aparecem na tela e ficam guardadas no **IndexedDB do navegador**. A primeira visita exige baixar e renderizar o GLB. Clique em **Visualizar 3D** para examinar os modelos, girar, ampliar, controlar animações e **Salvar imagem**. Imagens WebP são exibidas diretamente. ZIP/RAR são identificados como pacotes e não têm prévia interna.
 
-- Os arquivos **GLB** são abertos em 3D, com rotação, zoom, luz e sombras suaves.
-- Se o modelo incluir animações, o visualizador permite escolhê-las.
-- **Imagens** abrem em tela grande.
-- **ZIP/RAR** podem ser baixados; o navegador não inspeciona o conteúdo desses pacotes.
-- Busca, filtro por formato, tamanho e botão para copiar link direto.
+A opção **Prévias reais** pode ser desligada. Em conexões com economia de dados, o carregamento automático é desligado.
 
-## Compatibilidade
+## Adicionando um novo asset
 
-Para **não quebrar URLs de jogos existentes**, os arquivos antigos na raiz foram **mantidos** e os mesmos objetos Git foram referenciados nas pastas por categoria. A organização visual e os novos links estão em `assets/`. Isso não duplica o conteúdo binário no armazenamento Git, embora os arquivos apareçam nos dois caminhos.
+Adicione o arquivo à pasta apropriada e registre-o em `catalogo.json`, incluindo `name`, `title`, `path`, `category`, `subCategory`, `ext`, `sha`, `bytes` e `broken`. O campo SHA garante a atualização do cache quando o modelo muda.
 
-O arquivo `car police.glb` tem apenas 2 bytes no repositório e foi sinalizado como incompleto; ele precisa ser reenviado corretamente para visualizar.
+## Notas
 
-## Publicação no GitHub Pages
-
-Se o link da galeria mostrar 404, vá em **Settings → Pages → Build and deployment → Deploy from a branch**, escolha **main** e **/(root)** e salve. O site usa apenas HTML, CSS e JavaScript estáticos, sem servidor ou build.
-
-## Manutenção
-
-A listagem é produzida pelo arquivo `catalogo.json`. Ao adicionar novos GLBs nas pastas, acrescente também a entrada correspondente no catálogo para aparecerem na galeria. Não altere nomes e caminhos de assets usados por outros jogos sem revisar seus links.
+- `car police.glb` tem somente 2 bytes e está sinalizado como danificado.
+- Site estático GitHub Pages: branch `main`, diretório `/(root)`.
+- Renderização real requer WebGL e acesso ao script do model-viewer. Alguns arquivos muito grandes podem levar tempo para aparecer.

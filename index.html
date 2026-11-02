@@ -2,40 +2,71 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#101827">
-  <meta name="description" content="Biblioteca de modelos GLB, imagens e pacotes de assets para jogos. Pré-visualização 3D, categorias e downloads.">
-  <title>Rexx Assets — Biblioteca 3D</title>
-  <link rel="stylesheet" href="./style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090f1d">
+  <meta name="description" content="Catálogo organizado de modelos 3D GLB para jogos: prévias reais com textura, subpastas, filtros e downloads.">
+  <title>REXX Assets — Biblioteca de modelos 3D</title>
+  <link rel="stylesheet" href="./style.css?v=2">
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>
-  <script src="./app.js" defer></script>
+  <script src="./app.js?v=2" defer></script>
 </head>
 <body>
 <header class="topbar">
-  <a class="brand" href="./" aria-label="Início"><span class="brandmark">⬡</span><span>REXX <b>ASSETS</b><small>Biblioteca para jogos</small></span></a>
-  <a class="github" href="https://github.com/jogoiarexx-blip/assets-3d-pra-jogos-glb" target="_blank" rel="noopener noreferrer">Ver repositório ↗</a>
+  <a class="brand" href="./" aria-label="Página inicial REXX Assets"><span class="logo">⬡</span><span>REXX<span class="brand-accent">ASSETS</span><small>3D GAME LIBRARY</small></span></a>
+  <nav class="headerlinks"><a href="#biblioteca">Biblioteca</a><a href="https://github.com/jogoiarexx-blip/assets-3d-pra-jogos-glb" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav>
 </header>
 <main class="wrap">
   <section class="hero">
-    <span class="eyebrow">MODELOS 3D · IMAGENS · PACOTES</span>
-    <h1>Seus assets, <em>organizados.</em></h1>
-    <p>Escolha uma pasta, encontre seu arquivo e visualize os modelos GLB em 3D antes de baixar. Gire, aproxime e inspecione as texturas sem instalar nada.</p>
-    <div class="stats"><span><strong id="countAll">—</strong> arquivos</span><span><strong id="countGlb">—</strong> modelos GLB</span><span><strong id="countCat">—</strong> pastas</span></div>
+    <div class="herotext">
+      <p class="eyebrow"><span class="live-dot"></span> BIBLIOTECA DE ASSETS 3D</p>
+      <h1>Seu acervo 3D,<br><em>de verdade.</em></h1>
+      <p>Visualize a aparência real de cada modelo, explore os arquivos por pasta e encontre rapidamente o asset certo para o seu jogo.</p>
+      <div class="stats">
+        <span><strong id="countAll">—</strong> Arquivos</span>
+        <span><strong id="countGlb">—</strong> Modelos 3D</span>
+        <span><strong id="countCat">—</strong> Categorias</span>
+      </div>
+    </div>
+    <div class="heroart" aria-hidden="true"><div class="halo"></div><span class="cube">⬡</span><span class="orbit one"></span><span class="orbit two"></span><span class="hero-label">ASSET VIEWER <b>3D</b></span></div>
   </section>
-  <section class="catalog" aria-labelledby="catalogTitle">
-    <div class="sectionbar"><div><p class="eyebrow">CATÁLOGO</p><h2 id="catalogTitle">Explore a biblioteca</h2></div><label class="searchbox"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar modelo, personagem, carro…" autocomplete="off" aria-label="Buscar arquivos"></label></div>
-    <div id="categories" class="categories" aria-label="Filtrar por pasta"></div>
-    <div class="toolbar"><span id="results" role="status">Carregando arquivos…</span><label>Mostrar <select id="kind" aria-label="Tipo de arquivo"><option value="all">Todos os tipos</option><option value="glb">Modelos 3D (GLB)</option><option value="image">Imagens</option><option value="archive">Pacotes (ZIP/RAR)</option></select></label></div>
-    <div id="grid" class="grid" aria-live="polite"></div>
-    <p class="notice">As prévias GLB carregam somente quando você abre um modelo, para economizar internet e memória. Os arquivos originais continuam disponíveis na raiz do repositório para preservar links antigos.</p>
+  <section class="library" id="biblioteca">
+    <aside class="sidebar" aria-label="Navegação por pastas">
+      <div class="sideheading"><span class="eyebrow">EXPLORAR</span><h2>Pastas</h2></div>
+      <div id="folderNav" class="foldernav"></div>
+      <div class="sideinfo"><span>◈</span><p><strong>Prévia fiel ao GLB</strong>As miniaturas são renderizadas com os modelos reais e ficam salvas no seu navegador.</p></div>
+    </aside>
+    <div class="content">
+      <div class="cataloghead">
+        <div><p class="eyebrow">MEUS ARQUIVOS</p><h2 id="listTitle">Todos os assets</h2><p id="breadcrumbs" class="breadcrumbs">Biblioteca / Todos</p></div>
+        <label class="searchbox"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar carro, Chaves, Regina..." aria-label="Buscar assets por nome ou pasta" autocomplete="off"></label>
+      </div>
+      <div id="subcategories" class="subcategories" aria-label="Subpastas"></div>
+      <div class="toolbar">
+        <span id="results" role="status">Carregando biblioteca...</span>
+        <div class="toolbarcontrols">
+          <label class="previewtoggle" title="Gerar miniaturas reais com modelos 3D; pode consumir internet na primeira visita"><input id="autoPreview" type="checkbox" checked><span class="switch"></span> Prévias reais</label>
+          <label class="sortlabel">Ordenar <select id="sort" aria-label="Ordenação dos arquivos"><option value="name">Nome A–Z</option><option value="size-small">Menor arquivo</option><option value="size-large">Maior arquivo</option><option value="format">Formato</option></select></label>
+          <select id="kind" aria-label="Filtrar tipo de arquivo"><option value="all">Todos os formatos</option><option value="glb">GLB (3D)</option><option value="image">Imagens</option><option value="archive">ZIP / RAR</option></select>
+        </div>
+      </div>
+      <div id="previewStatus" class="previewstatus" aria-live="polite"></div>
+      <div id="grid" class="grid"></div>
+      <p class="footnote">Miniaturas dos GLBs são criadas a partir dos próprios arquivos, não são imagens ilustrativas. O primeiro carregamento usa dados; depois as prévias ficam em cache neste navegador. ZIP/RAR mostram apenas o tipo de arquivo.</p>
+    </div>
   </section>
 </main>
-<dialog id="viewer" aria-label="Visualizador de asset">
-  <div class="modalbar"><div><span id="viewCategory" class="eyebrow"></span><h2 id="viewName"></h2></div><button id="close" class="close" type="button" aria-label="Fechar">✕</button></div>
+<dialog id="viewer" aria-label="Visualizador de modelos">
+  <div class="modalbar">
+    <div><span id="viewCategory" class="eyebrow"></span><h2 id="viewName"></h2><p id="viewFilename" class="filename"></p></div>
+    <button type="button" class="close" id="close" aria-label="Fechar visualizador">✕</button>
+  </div>
   <div id="viewport" class="viewport"></div>
-  <p id="viewHint" class="hint"></p>
-  <div class="modalfooter"><span id="viewInfo"></span><div class="actions"><button id="copy" class="outline" type="button">Copiar link</button><a id="download" class="primary" download>Baixar arquivo ↓</a></div></div>
+  <div id="viewHint" class="viewhint">Arraste para girar, use a roda para aproximar.</div>
+  <div class="modalfooter">
+    <div id="viewInfo" class="fileinfo"></div>
+    <div class="actions"><button type="button" id="rotate" class="outline" hidden>⟳ Girar</button><button type="button" id="snapshot" class="outline" hidden>Salvar imagem</button><button type="button" id="copy" class="outline">Copiar link</button><a id="download" class="primary" download>Baixar arquivo ↓</a></div>
+  </div>
 </dialog>
-<footer>Feito para jogos • GLB, imagens e pacotes organizados por categoria</footer>
+<footer>REXX ASSETS <span>•</span> Biblioteca de modelos para jogos <span>•</span> Organizado por pastas</footer>
 </body>
 </html>

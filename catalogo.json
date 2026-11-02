@@ -1,470 +1,852 @@
 [
   {
     "name": "machado_coletavel_80cm.glb",
-    "path": "assets/armas/machado_coletavel_80cm.glb",
+    "path": "assets/armas/machados/machado_coletavel_80cm.glb",
     "legacyPath": "Personagem-REV6-Machado-80cm-Coletavel-ThreeJS/Machado_REV6/machado_coletavel_80cm.glb",
     "category": "armas",
     "ext": "glb",
     "bytes": 10025076,
-    "broken": false
+    "broken": false,
+    "subCategory": "machados",
+    "sha": "a90d2e16c7cdf3cca6174281dd9cc9f9dacf685b",
+    "title": "Machado Coletável (80 cm)",
+    "tags": [
+      "armas",
+      "machados"
+    ]
   },
   {
     "name": "Chicago_Original_PS1_Setores_GLTF_Texturas_Visualizador.zip",
-    "path": "assets/cenarios/Chicago_Original_PS1_Setores_GLTF_Texturas_Visualizador.zip",
+    "path": "assets/cenarios/mapas/Chicago_Original_PS1_Setores_GLTF_Texturas_Visualizador.zip",
     "legacyPath": "Chicago_Original_PS1_Setores_GLTF_Texturas_Visualizador.zip",
     "category": "cenarios",
     "ext": "zip",
     "bytes": 18261699,
-    "broken": false
+    "broken": false,
+    "subCategory": "mapas",
+    "sha": "58d636e3924b158b0521b8db25f2a7d33b8c3292",
+    "title": "Chicago PS1 — Setores e Texturas",
+    "tags": [
+      "cenarios",
+      "mapas"
+    ]
   },
   {
     "name": "mapa_chicago_driver2.webp",
-    "path": "assets/cenarios/mapa_chicago_driver2.webp",
+    "path": "assets/cenarios/mapas/mapa_chicago_driver2.webp",
     "legacyPath": "mapa_chicago_driver2.webp",
     "category": "cenarios",
     "ext": "webp",
     "bytes": 483124,
-    "broken": false
+    "broken": false,
+    "subCategory": "mapas",
+    "sha": "23db8cba32ea89ca89304482e60f6b438b8c54dd",
+    "title": "Mapa de Chicago — Driver 2",
+    "tags": [
+      "cenarios",
+      "mapas"
+    ]
   },
   {
     "name": "Meshy_AI_Old_Wooden_Coffin_1101130144_texture.glb",
-    "path": "assets/cenarios/Meshy_AI_Old_Wooden_Coffin_1101130144_texture.glb",
+    "path": "assets/cenarios/objetos/Meshy_AI_Old_Wooden_Coffin_1101130144_texture.glb",
     "legacyPath": "Meshy_AI_Old_Wooden_Coffin_1101130144_texture.glb",
     "category": "cenarios",
     "ext": "glb",
     "bytes": 7652664,
-    "broken": false
+    "broken": false,
+    "subCategory": "objetos",
+    "sha": "c233aa4cb64cb2d591732db271c8a3f51cc1c25b",
+    "title": "Caixão Antigo de Madeira",
+    "tags": [
+      "cenarios",
+      "objetos"
+    ]
   },
   {
     "name": "bruxa do 71.glb",
-    "path": "assets/chaves/bruxa do 71.glb",
+    "path": "assets/chaves/personagens/bruxa do 71.glb",
     "legacyPath": "bruxa do 71.glb",
     "category": "chaves",
     "ext": "glb",
     "bytes": 14668700,
-    "broken": false
+    "broken": false,
+    "subCategory": "personagens",
+    "sha": "971648f23eb0123e3f774467ef7e261274b4171f",
+    "title": "Dona Clotilde — Bruxa do 71",
+    "tags": [
+      "chaves",
+      "personagens"
+    ]
   },
   {
     "name": "Chaves_Esqueleto_Rig_22_Ossos.zip",
-    "path": "assets/chaves/Chaves_Esqueleto_Rig_22_Ossos.zip",
+    "path": "assets/chaves/personagens/Chaves_Esqueleto_Rig_22_Ossos.zip",
     "legacyPath": "Chaves_Esqueleto_Rig_22_Ossos.zip",
     "category": "chaves",
     "ext": "zip",
     "bytes": 6551862,
-    "broken": false
+    "broken": false,
+    "subCategory": "personagens",
+    "sha": "dc03a9db7222807c01e8f7e59949fba5320c9a36",
+    "title": "Chaves — Rig com 22 Ossos",
+    "tags": [
+      "chaves",
+      "personagens"
+    ]
   },
   {
     "name": "chiquinha.glb",
-    "path": "assets/chaves/chiquinha.glb",
+    "path": "assets/chaves/personagens/chiquinha.glb",
     "legacyPath": "chiquinha.glb",
     "category": "chaves",
     "ext": "glb",
     "bytes": 10986296,
-    "broken": false
+    "broken": false,
+    "subCategory": "personagens",
+    "sha": "6dcc470d8df51ccb669152ec6524c0b2a6282eba",
+    "title": "chiquinha",
+    "tags": [
+      "chaves",
+      "personagens"
+    ]
   },
   {
     "name": "seu madruga.zip",
-    "path": "assets/chaves/seu madruga.zip",
+    "path": "assets/chaves/personagens/seu madruga.zip",
     "legacyPath": "seu madruga.zip",
     "category": "chaves",
     "ext": "zip",
     "bytes": 20469111,
-    "broken": false
+    "broken": false,
+    "subCategory": "personagens",
+    "sha": "18d6416ac2998bc2131cb896629b96265d8f33be",
+    "title": "seu madruga",
+    "tags": [
+      "chaves",
+      "personagens"
+    ]
   },
   {
     "name": "Aranha_sombria_5_animacoes_PACOTE.zip",
-    "path": "assets/criaturas/Aranha_sombria_5_animacoes_PACOTE.zip",
+    "path": "assets/criaturas/monstros/Aranha_sombria_5_animacoes_PACOTE.zip",
     "legacyPath": "Aranha_sombria_5_animacoes_PACOTE.zip",
     "category": "criaturas",
     "ext": "zip",
     "bytes": 12258792,
-    "broken": false
+    "broken": false,
+    "subCategory": "monstros",
+    "sha": "9445c35a26ff2d34cd219f77b2cdbb1dcff60c3a",
+    "title": "Aranha Sombria — 5 Animações",
+    "tags": [
+      "criaturas",
+      "monstros"
+    ]
   },
   {
     "name": "cachorro 3.glb",
-    "path": "assets/criaturas/cachorro 3.glb",
+    "path": "assets/criaturas/animais/cachorro 3.glb",
     "legacyPath": "cachorro 3.glb",
     "category": "criaturas",
     "ext": "glb",
     "bytes": 14220480,
-    "broken": false
+    "broken": false,
+    "subCategory": "animais",
+    "sha": "61c37dd4d1c66b17cb4dbd04ab63c1cc29d4a771",
+    "title": "cachorro 3",
+    "tags": [
+      "criaturas",
+      "animais"
+    ]
   },
   {
     "name": "goblin.glb",
-    "path": "assets/criaturas/goblin.glb",
+    "path": "assets/criaturas/monstros/goblin.glb",
     "legacyPath": "goblin.glb",
     "category": "criaturas",
     "ext": "glb",
     "bytes": 12991712,
-    "broken": false
+    "broken": false,
+    "subCategory": "monstros",
+    "sha": "b761be7380582e386be231a04a4ab373e6ac0fbd",
+    "title": "goblin",
+    "tags": [
+      "criaturas",
+      "monstros"
+    ]
   },
   {
     "name": "Meshy_AI_Clown_Cream_Carnage_1022153923_texture.glb",
-    "path": "assets/criaturas/Meshy_AI_Clown_Cream_Carnage_1022153923_texture.glb",
+    "path": "assets/criaturas/monstros/Meshy_AI_Clown_Cream_Carnage_1022153923_texture.glb",
     "legacyPath": "Meshy_AI_Clown_Cream_Carnage_1022153923_texture.glb",
     "category": "criaturas",
     "ext": "glb",
     "bytes": 23764204,
-    "broken": false
+    "broken": false,
+    "subCategory": "monstros",
+    "sha": "4a5f0975e4ae55d87e50b48e2f86b5c87fb95a00",
+    "title": "Clown Cream Carnage",
+    "tags": [
+      "criaturas",
+      "monstros"
+    ]
   },
   {
     "name": "Meshy_AI_Shambling_Schoolyard__1021205901_texture.glb",
-    "path": "assets/criaturas/Meshy_AI_Shambling_Schoolyard__1021205901_texture.glb",
+    "path": "assets/criaturas/monstros/Meshy_AI_Shambling_Schoolyard__1021205901_texture.glb",
     "legacyPath": "Meshy_AI_Shambling_Schoolyard__1021205901_texture.glb",
     "category": "criaturas",
     "ext": "glb",
     "bytes": 8656596,
-    "broken": false
+    "broken": false,
+    "subCategory": "monstros",
+    "sha": "975734516b8beb8c72bcb5f4adaa2acba6f2aaf5",
+    "title": "Shambling Schoolyard",
+    "tags": [
+      "criaturas",
+      "monstros"
+    ]
   },
   {
     "name": "pastor alemao.glb",
-    "path": "assets/criaturas/pastor alemao.glb",
+    "path": "assets/criaturas/animais/pastor alemao.glb",
     "legacyPath": "pastor alemao.glb",
     "category": "criaturas",
     "ext": "glb",
     "bytes": 15800904,
-    "broken": false
+    "broken": false,
+    "subCategory": "animais",
+    "sha": "69b282b7f3c03e8096ff542d96e9e43fda483573",
+    "title": "pastor alemao",
+    "tags": [
+      "criaturas",
+      "animais"
+    ]
   },
   {
     "name": "Zumbi_Animado_REV3_Completo.zip",
-    "path": "assets/criaturas/Zumbi_Animado_REV3_Completo.zip",
+    "path": "assets/criaturas/monstros/Zumbi_Animado_REV3_Completo.zip",
     "legacyPath": "Zumbi_Animado_REV3_Completo.zip",
     "category": "criaturas",
     "ext": "zip",
     "bytes": 16489956,
-    "broken": false
+    "broken": false,
+    "subCategory": "monstros",
+    "sha": "053147b12d8a2e0c0860d0587c0abfd1c3d0cbca",
+    "title": "Zumbi — Pacote de Animações",
+    "tags": [
+      "criaturas",
+      "monstros"
+    ]
   },
   {
     "name": "Dinossauro_Animacoes_Leve.zip",
-    "path": "assets/dinossauros/Dinossauro_Animacoes_Leve.zip",
+    "path": "assets/dinossauros/dinossauros/Dinossauro_Animacoes_Leve.zip",
     "legacyPath": "Dinossauro_Animacoes_Leve.zip",
     "category": "dinossauros",
     "ext": "zip",
     "bytes": 6281945,
-    "broken": false
+    "broken": false,
+    "subCategory": "dinossauros",
+    "sha": "71e2e63c3df91f4be30d1ce9ff1d54843262ea98",
+    "title": "Dinossauro — Animações Leves",
+    "tags": [
+      "dinossauros",
+      "dinossauros"
+    ]
   },
   {
     "name": "raptor.glb",
-    "path": "assets/dinossauros/raptor.glb",
+    "path": "assets/dinossauros/dinossauros/raptor.glb",
     "legacyPath": "raptor.glb",
     "category": "dinossauros",
     "ext": "glb",
     "bytes": 12543244,
-    "broken": false
+    "broken": false,
+    "subCategory": "dinossauros",
+    "sha": "9abcc393fa591be13631259dcc5ff0c4f71b9a73",
+    "title": "raptor",
+    "tags": [
+      "dinossauros",
+      "dinossauros"
+    ]
   },
   {
     "name": "regina graficos melhores.glb",
-    "path": "assets/dinossauros/regina graficos melhores.glb",
+    "path": "assets/dinossauros/regina/regina graficos melhores.glb",
     "legacyPath": "regina graficos melhores.glb",
     "category": "dinossauros",
     "ext": "glb",
     "bytes": 14952920,
-    "broken": false
+    "broken": false,
+    "subCategory": "regina",
+    "sha": "9f8d5511b7185baa940372197c56b184c75f30e5",
+    "title": "Regina — Gráficos Melhorados",
+    "tags": [
+      "dinossauros",
+      "regina"
+    ]
   },
   {
     "name": "regina pronta pro dino.glb",
-    "path": "assets/dinossauros/regina pronta pro dino.glb",
+    "path": "assets/dinossauros/regina/regina pronta pro dino.glb",
     "legacyPath": "regina pronta pro dino.glb",
     "category": "dinossauros",
     "ext": "glb",
     "bytes": 14253752,
-    "broken": false
+    "broken": false,
+    "subCategory": "regina",
+    "sha": "987e787d9b41ee2a48b0f5508b09b521f8ecd847",
+    "title": "Regina — Pronta para Dino Crisis",
+    "tags": [
+      "dinossauros",
+      "regina"
+    ]
   },
   {
     "name": "regina.glb",
-    "path": "assets/dinossauros/regina.glb",
+    "path": "assets/dinossauros/regina/regina.glb",
     "legacyPath": "regina.glb",
     "category": "dinossauros",
     "ext": "glb",
     "bytes": 14464288,
-    "broken": false
+    "broken": false,
+    "subCategory": "regina",
+    "sha": "f829ac4a68d2c0a0710e8226bd73183ce6599a85",
+    "title": "regina",
+    "tags": [
+      "dinossauros",
+      "regina"
+    ]
   },
   {
     "name": "tiranossauro.glb",
-    "path": "assets/dinossauros/tiranossauro.glb",
+    "path": "assets/dinossauros/dinossauros/tiranossauro.glb",
     "legacyPath": "tiranossauro.glb",
     "category": "dinossauros",
     "ext": "glb",
     "bytes": 6625404,
-    "broken": false
+    "broken": false,
+    "subCategory": "dinossauros",
+    "sha": "163b5cda9ad274e0bf5a3bf250bc7f0c49709cb0",
+    "title": "tiranossauro",
+    "tags": [
+      "dinossauros",
+      "dinossauros"
+    ]
   },
   {
     "name": "Astrid.glb",
-    "path": "assets/dragoes/Astrid.glb",
+    "path": "assets/dragoes/personagens/Astrid.glb",
     "legacyPath": "Astrid.glb",
     "category": "dragoes",
     "ext": "glb",
     "bytes": 14370212,
-    "broken": false
+    "broken": false,
+    "subCategory": "personagens",
+    "sha": "8277e908892ffdd5b97e49ad797e658c4f48ba64",
+    "title": "Astrid",
+    "tags": [
+      "dragoes",
+      "personagens"
+    ]
   },
   {
     "name": "cabeça de vento (2).glb",
-    "path": "assets/dragoes/cabeça de vento (2).glb",
+    "path": "assets/dragoes/personagens/cabeça de vento (2).glb",
     "legacyPath": "cabeça de vento (2).glb",
     "category": "dragoes",
     "ext": "glb",
     "bytes": 10329964,
-    "broken": false
+    "broken": false,
+    "subCategory": "personagens",
+    "sha": "a3a88566f5342276e1b12b736e6560e45dbfa495",
+    "title": "Cabeça de Vento",
+    "tags": [
+      "dragoes",
+      "personagens"
+    ]
   },
   {
     "name": "forja.glb",
-    "path": "assets/dragoes/forja.glb",
+    "path": "assets/dragoes/personagens/forja.glb",
     "legacyPath": "forja.glb",
     "category": "dragoes",
     "ext": "glb",
     "bytes": 14428820,
-    "broken": false
+    "broken": false,
+    "subCategory": "personagens",
+    "sha": "e9a1040a67f70a0e76e8a1c1a866246221e31d08",
+    "title": "Homem da Forja",
+    "tags": [
+      "dragoes",
+      "personagens"
+    ]
   },
   {
     "name": "furia da noite.glb",
-    "path": "assets/dragoes/furia da noite.glb",
+    "path": "assets/dragoes/dragoes/furia da noite.glb",
     "legacyPath": "furia da noite.glb",
     "category": "dragoes",
     "ext": "glb",
     "bytes": 10122712,
-    "broken": false
+    "broken": false,
+    "subCategory": "dragoes",
+    "sha": "f4810a83a8eecd2459d46848f1e7cbbf5aa13ccd",
+    "title": "furia da noite",
+    "tags": [
+      "dragoes",
+      "dragoes"
+    ]
   },
   {
     "name": "Furia_da_Luz_Pacote_8_Animacoes.zip",
-    "path": "assets/dragoes/Furia_da_Luz_Pacote_8_Animacoes.zip",
+    "path": "assets/dragoes/dragoes/Furia_da_Luz_Pacote_8_Animacoes.zip",
     "legacyPath": "Furia_da_Luz_Pacote_8_Animacoes.zip",
     "category": "dragoes",
     "ext": "zip",
     "bytes": 10163350,
-    "broken": false
+    "broken": false,
+    "subCategory": "dragoes",
+    "sha": "09bbef567b9eab0168ae9726636d5802e7fdbfea",
+    "title": "Fúria da Luz — 8 Animações",
+    "tags": [
+      "dragoes",
+      "dragoes"
+    ]
   },
   {
     "name": "Furia_da_Noite_Pacote_8_Animacoes.zip",
-    "path": "assets/dragoes/Furia_da_Noite_Pacote_8_Animacoes.zip",
+    "path": "assets/dragoes/dragoes/Furia_da_Noite_Pacote_8_Animacoes.zip",
     "legacyPath": "Furia_da_Noite_Pacote_8_Animacoes.zip",
     "category": "dragoes",
     "ext": "zip",
     "bytes": 8502035,
-    "broken": false
+    "broken": false,
+    "subCategory": "dragoes",
+    "sha": "a0c7ae02a21266fce0c451353138c5fb41265200",
+    "title": "Fúria da Noite — 8 Animações",
+    "tags": [
+      "dragoes",
+      "dragoes"
+    ]
   },
   {
     "name": "Meshy_AI_Vallisneria_1101183850_texture.glb",
-    "path": "assets/natureza/Meshy_AI_Vallisneria_1101183850_texture.glb",
+    "path": "assets/natureza/plantas/Meshy_AI_Vallisneria_1101183850_texture.glb",
     "legacyPath": "Meshy_AI_Vallisneria_1101183850_texture.glb",
     "category": "natureza",
     "ext": "glb",
     "bytes": 18211284,
-    "broken": false
+    "broken": false,
+    "subCategory": "plantas",
+    "sha": "c6110a8dd3e8aecf1dc5dba9ea7ff60ff3a8af4c",
+    "title": "Vallisneria — Planta",
+    "tags": [
+      "natureza",
+      "plantas"
+    ]
   },
   {
     "name": "Don vito.glb",
-    "path": "assets/personagens/Don vito.glb",
+    "path": "assets/personagens/outros/Don vito.glb",
     "legacyPath": "Don vito.glb",
     "category": "personagens",
     "ext": "glb",
     "bytes": 12842704,
-    "broken": false
+    "broken": false,
+    "subCategory": "outros",
+    "sha": "8342e53d533b1abe42280ed5cb03e6bbaa085309",
+    "title": "Don Vito",
+    "tags": [
+      "personagens",
+      "outros"
+    ]
   },
   {
     "name": "guerreira apocaliptca.rar",
-    "path": "assets/personagens/guerreira apocaliptca.rar",
+    "path": "assets/personagens/outros/guerreira apocaliptca.rar",
     "legacyPath": "guerreira apocaliptca.rar",
     "category": "personagens",
     "ext": "rar",
     "bytes": 22874453,
-    "broken": false
+    "broken": false,
+    "subCategory": "outros",
+    "sha": "7dec6391e37fedec3acdd59e353b7ca13da085c1",
+    "title": "guerreira apocaliptca",
+    "tags": [
+      "personagens",
+      "outros"
+    ]
   },
   {
     "name": "mailou.glb",
-    "path": "assets/personagens/mailou.glb",
+    "path": "assets/personagens/outros/mailou.glb",
     "legacyPath": "mailou.glb",
     "category": "personagens",
     "ext": "glb",
     "bytes": 12627708,
-    "broken": false
+    "broken": false,
+    "subCategory": "outros",
+    "sha": "47e25c6bfc560e923353ffef3a62cb5b2a59a911",
+    "title": "mailou",
+    "tags": [
+      "personagens",
+      "outros"
+    ]
   },
   {
     "name": "mendingo.glb",
-    "path": "assets/personagens/mendingo.glb",
+    "path": "assets/personagens/driver-2/mendingo.glb",
     "legacyPath": "mendingo.glb",
     "category": "personagens",
     "ext": "glb",
     "bytes": 14373428,
-    "broken": false
+    "broken": false,
+    "subCategory": "driver-2",
+    "sha": "3c4c6086f7429ca62aa4048a8fdbd6d407e1b2f1",
+    "title": "mendingo",
+    "tags": [
+      "personagens",
+      "driver-2"
+    ]
   },
   {
     "name": "menina.glb",
-    "path": "assets/personagens/menina.glb",
+    "path": "assets/personagens/outros/menina.glb",
     "legacyPath": "menina.glb",
     "category": "personagens",
     "ext": "glb",
     "bytes": 12307880,
-    "broken": false
+    "broken": false,
+    "subCategory": "outros",
+    "sha": "7d3de9ba99d9436179e2e5bb75f1014216ef6d74",
+    "title": "menina",
+    "tags": [
+      "personagens",
+      "outros"
+    ]
   },
   {
     "name": "menino.glb",
-    "path": "assets/personagens/menino.glb",
+    "path": "assets/personagens/outros/menino.glb",
     "legacyPath": "menino.glb",
     "category": "personagens",
     "ext": "glb",
     "bytes": 12367916,
-    "broken": false
+    "broken": false,
+    "subCategory": "outros",
+    "sha": "70c00062d6804c4e5feaed10cf477a7d3bc14508",
+    "title": "menino",
+    "tags": [
+      "personagens",
+      "outros"
+    ]
   },
   {
     "name": "Meshy_AI_The_Striped_Wanderer_1022141954_texture.glb",
-    "path": "assets/personagens/Meshy_AI_The_Striped_Wanderer_1022141954_texture.glb",
+    "path": "assets/personagens/outros/Meshy_AI_The_Striped_Wanderer_1022141954_texture.glb",
     "legacyPath": "Meshy_AI_The_Striped_Wanderer_1022141954_texture.glb",
     "category": "personagens",
     "ext": "glb",
     "bytes": 6404588,
-    "broken": false
+    "broken": false,
+    "subCategory": "outros",
+    "sha": "02da23967148a051190f9589e996d2b4fded85e3",
+    "title": "The Striped Wanderer",
+    "tags": [
+      "personagens",
+      "outros"
+    ]
   },
   {
     "name": "Meshy_AI_Urban_Enforcer_All_Animations.glb",
-    "path": "assets/personagens/Meshy_AI_Urban_Enforcer_All_Animations.glb",
+    "path": "assets/personagens/driver-2/Meshy_AI_Urban_Enforcer_All_Animations.glb",
     "legacyPath": "Meshy_AI_Urban_Enforcer_All_Animations.glb",
     "category": "personagens",
     "ext": "glb",
     "bytes": 5850540,
-    "broken": false
+    "broken": false,
+    "subCategory": "driver-2",
+    "sha": "47c7e80c239597a5e8a0ebe18d37706267098637",
+    "title": "Urban Enforcer All Animations",
+    "tags": [
+      "personagens",
+      "driver-2"
+    ]
   },
   {
     "name": "mulher 2.glb",
-    "path": "assets/personagens/mulher 2.glb",
+    "path": "assets/personagens/outros/mulher 2.glb",
     "legacyPath": "mulher 2.glb",
     "category": "personagens",
     "ext": "glb",
     "bytes": 13508092,
-    "broken": false
+    "broken": false,
+    "subCategory": "outros",
+    "sha": "6bec814facd9c3ed1a883c5400d172ad57bc23b4",
+    "title": "mulher 2",
+    "tags": [
+      "personagens",
+      "outros"
+    ]
   },
   {
     "name": "mulher 3.glb",
-    "path": "assets/personagens/mulher 3.glb",
+    "path": "assets/personagens/outros/mulher 3.glb",
     "legacyPath": "mulher 3.glb",
     "category": "personagens",
     "ext": "glb",
     "bytes": 14101852,
-    "broken": false
+    "broken": false,
+    "subCategory": "outros",
+    "sha": "9a19164e4537f3a1bb1b0f11255f3a8ecc92331f",
+    "title": "mulher 3",
+    "tags": [
+      "personagens",
+      "outros"
+    ]
   },
   {
     "name": "Pedestre_Masculino_Driver2_Atirar_Com_Pistola.glb",
-    "path": "assets/personagens/Pedestre_Masculino_Driver2_Atirar_Com_Pistola.glb",
+    "path": "assets/personagens/driver-2/Pedestre_Masculino_Driver2_Atirar_Com_Pistola.glb",
     "legacyPath": "Pedestre_Masculino_Driver2_Atirar_Com_Pistola.glb",
     "category": "personagens",
     "ext": "glb",
     "bytes": 5890592,
-    "broken": false
+    "broken": false,
+    "subCategory": "driver-2",
+    "sha": "3e276bea03edc23489a6419f3e98700a9f1dd23c",
+    "title": "Pedestre Masculino Driver2 Atirar Com Pistola",
+    "tags": [
+      "personagens",
+      "driver-2"
+    ]
   },
   {
     "name": "personagem animado.glb",
-    "path": "assets/personagens/personagem animado.glb",
+    "path": "assets/personagens/outros/personagem animado.glb",
     "legacyPath": "personagem animado.glb",
     "category": "personagens",
     "ext": "glb",
     "bytes": 15038356,
-    "broken": false
+    "broken": false,
+    "subCategory": "outros",
+    "sha": "1049baa588d31d445e18ccadd5166b35d24a22f5",
+    "title": "personagem animado",
+    "tags": [
+      "personagens",
+      "outros"
+    ]
   },
   {
     "name": "Tanner_Terno_Driver2_Mesmo_Rig_5_Animacoes.glb",
-    "path": "assets/personagens/Tanner_Terno_Driver2_Mesmo_Rig_5_Animacoes.glb",
+    "path": "assets/personagens/driver-2/Tanner_Terno_Driver2_Mesmo_Rig_5_Animacoes.glb",
     "legacyPath": "Tanner_Terno_Driver2_Mesmo_Rig_5_Animacoes.glb",
     "category": "personagens",
     "ext": "glb",
     "bytes": 6325612,
-    "broken": false
+    "broken": false,
+    "subCategory": "driver-2",
+    "sha": "b691605911f51cc6f9039fc245109dfc1cfee2f5",
+    "title": "Tanner de Terno — 5 Animações",
+    "tags": [
+      "personagens",
+      "driver-2"
+    ]
   },
   {
     "name": "tanner.glb",
-    "path": "assets/personagens/tanner.glb",
+    "path": "assets/personagens/driver-2/tanner.glb",
     "legacyPath": "tanner.glb",
     "category": "personagens",
     "ext": "glb",
     "bytes": 8547108,
-    "broken": false
+    "broken": false,
+    "subCategory": "driver-2",
+    "sha": "a860ba85e1b8f9e64658e3e929356b991eb14e12",
+    "title": "tanner",
+    "tags": [
+      "personagens",
+      "driver-2"
+    ]
   },
   {
     "name": "velho 2.glb",
-    "path": "assets/personagens/velho 2.glb",
+    "path": "assets/personagens/outros/velho 2.glb",
     "legacyPath": "velho 2.glb",
     "category": "personagens",
     "ext": "glb",
     "bytes": 18787016,
-    "broken": false
+    "broken": false,
+    "subCategory": "outros",
+    "sha": "42c72ccded25af80c9b274b47438886c5fdeb93f",
+    "title": "velho 2",
+    "tags": [
+      "personagens",
+      "outros"
+    ]
   },
   {
     "name": "velho cauvo.glb",
-    "path": "assets/personagens/velho cauvo.glb",
+    "path": "assets/personagens/outros/velho cauvo.glb",
     "legacyPath": "velho cauvo.glb",
     "category": "personagens",
     "ext": "glb",
     "bytes": 11784988,
-    "broken": false
+    "broken": false,
+    "subCategory": "outros",
+    "sha": "7c8a66c8c510aa2b9386fd99c3ad7b95c8d92149",
+    "title": "velho cauvo",
+    "tags": [
+      "personagens",
+      "outros"
+    ]
   },
   {
     "name": "caminhonete velha.glb",
-    "path": "assets/veiculos/caminhonete velha.glb",
+    "path": "assets/veiculos/utilitarios/caminhonete velha.glb",
     "legacyPath": "caminhonete velha.glb",
     "category": "veiculos",
     "ext": "glb",
     "bytes": 25944236,
-    "broken": false
+    "broken": false,
+    "subCategory": "utilitarios",
+    "sha": "db070ae95f20a21f7443f8cf7cd7e17fa4bcbb74",
+    "title": "caminhonete velha",
+    "tags": [
+      "veiculos",
+      "utilitarios"
+    ]
   },
   {
     "name": "car police.glb",
-    "path": "assets/veiculos/car police.glb",
+    "path": "assets/veiculos/carros/car police.glb",
     "legacyPath": "car police.glb",
     "category": "veiculos",
     "ext": "glb",
     "bytes": 2,
-    "broken": true
+    "broken": true,
+    "subCategory": "carros",
+    "sha": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+    "title": "Carro da Polícia (incompleto)",
+    "tags": [
+      "veiculos",
+      "carros"
+    ]
   },
   {
     "name": "carro_driver2_otimizado.glb",
-    "path": "assets/veiculos/carro_driver2_otimizado.glb",
+    "path": "assets/veiculos/carros/carro_driver2_otimizado.glb",
     "legacyPath": "carro_driver2_otimizado.glb",
     "category": "veiculos",
     "ext": "glb",
     "bytes": 1592952,
-    "broken": false
+    "broken": false,
+    "subCategory": "carros",
+    "sha": "b5bb5fe08c047fa3eac22d00e215bf3b7a177bd6",
+    "title": "Carro Driver 2 — Otimizado",
+    "tags": [
+      "veiculos",
+      "carros"
+    ]
   },
   {
     "name": "fusca.glb",
-    "path": "assets/veiculos/fusca.glb",
+    "path": "assets/veiculos/carros/fusca.glb",
     "legacyPath": "fusca.glb",
     "category": "veiculos",
     "ext": "glb",
     "bytes": 20711128,
-    "broken": false
+    "broken": false,
+    "subCategory": "carros",
+    "sha": "0a2ba75d13c7e8b0dadfb36a6cb6443cf01a05d6",
+    "title": "fusca",
+    "tags": [
+      "veiculos",
+      "carros"
+    ]
   },
   {
     "name": "kenney_car-kit.zip",
-    "path": "assets/veiculos/kenney_car-kit.zip",
+    "path": "assets/veiculos/pacotes/kenney_car-kit.zip",
     "legacyPath": "kenney_car-kit.zip",
     "category": "veiculos",
     "ext": "zip",
     "bytes": 3668013,
-    "broken": false
+    "broken": false,
+    "subCategory": "pacotes",
+    "sha": "d59024bd9a4b407ace719fe46e49eb2dcd299d9e",
+    "title": "Kit de Carros Kenney",
+    "tags": [
+      "veiculos",
+      "pacotes"
+    ]
   },
   {
     "name": "Meshy_AI_carro_Mercedes_SL_35_1102123157_texture.glb",
-    "path": "assets/veiculos/Meshy_AI_carro_Mercedes_SL_35_1102123157_texture.glb",
+    "path": "assets/veiculos/carros/Meshy_AI_carro_Mercedes_SL_35_1102123157_texture.glb",
     "legacyPath": "Meshy_AI_carro_Mercedes_SL_35_1102123157_texture.glb",
     "category": "veiculos",
     "ext": "glb",
     "bytes": 12856612,
-    "broken": false
+    "broken": false,
+    "subCategory": "carros",
+    "sha": "b0205b5c4c8b9fc298b98368e11880b03c289813",
+    "title": "Mercedes SL 35",
+    "tags": [
+      "veiculos",
+      "carros"
+    ]
   },
   {
     "name": "Meshy_AI_Vintage_Drive_1102074902_texture.glb",
-    "path": "assets/veiculos/Meshy_AI_Vintage_Drive_1102074902_texture.glb",
+    "path": "assets/veiculos/carros/Meshy_AI_Vintage_Drive_1102074902_texture.glb",
     "legacyPath": "Meshy_AI_Vintage_Drive_1102074902_texture.glb",
     "category": "veiculos",
     "ext": "glb",
     "bytes": 18722212,
-    "broken": false
+    "broken": false,
+    "subCategory": "carros",
+    "sha": "90dab7c19238d7adfa72848601c197504f92b62f",
+    "title": "Carro Vintage",
+    "tags": [
+      "veiculos",
+      "carros"
+    ]
   },
   {
     "name": "onibus escolar.glb",
-    "path": "assets/veiculos/onibus escolar.glb",
+    "path": "assets/veiculos/utilitarios/onibus escolar.glb",
     "legacyPath": "onibus escolar.glb",
     "category": "veiculos",
     "ext": "glb",
     "bytes": 2806984,
-    "broken": false
+    "broken": false,
+    "subCategory": "utilitarios",
+    "sha": "f4eaafb12cd7572c3443bb348e84e7c58f586e6c",
+    "title": "onibus escolar",
+    "tags": [
+      "veiculos",
+      "utilitarios"
+    ]
+  },
+  {
+    "name": "Van_Rustica_Otimizada_23MB.glb",
+    "title": "Van Rústica — Otimizada (23 MB)",
+    "path": "assets/veiculos/utilitarios/Van_Rustica_Otimizada_23MB.glb",
+    "legacyPath": "Van_Rustica_Otimizada_23MB.glb",
+    "category": "veiculos",
+    "subCategory": "utilitarios",
+    "ext": "glb",
+    "bytes": 22975456,
+    "broken": false,
+    "sha": "b79b2c9d8b0aee8a5072020bf5f7650dc6b608d8",
+    "tags": [
+      "veiculos",
+      "utilitarios",
+      "van",
+      "otimizada"
+    ]
   }
 ]
