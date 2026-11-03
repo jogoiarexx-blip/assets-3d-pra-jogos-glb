@@ -24,6 +24,10 @@ const SUBNAMES={
 };
 const $=id=>document.getElementById(id);
 const normalize=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+// Keep initial page light; heavy GLBs are previewed only on explicit request.
+const PAGE_SIZE=24;
+const AUTO_PREVIEW_MAX_BYTES=18*1024*1024;
+let visibleLimit=PAGE_SIZE;
 let all=[],category='all',sub='all',kind='all',sort='name',search='',current=null;
 let enabled=true,observer=null,previewQueue=[],working=false,previewFinished=0,previewErrors=0;
 const awaiting=new Set();
@@ -75,11 +79,11 @@ function updateUrl(){
 }
 function readUrl(){
   const p=new URLSearchParams(location.search);
-  if(p.has('pasta')&&CATEGORIES[p.get('pasta')])category=p.get('pasta');
-  if(p.has('sub'))sub=p.get('sub');
+  category=p.has('pasta')&&CATEGORIES[p.get('pasta')]?p.get('pasta'):'all';
+  sub=p.get('sub')||'all';
 }
-function chooseCategory(k){category=k;sub='all';updateUrl();render();document.getElementById('biblioteca').scrollIntoView({behavior:'smooth',block:'start'});}
-function chooseSub(k){sub=k;updateUrl();render();}
+function chooseCategory(k){category=k;sub='all';visibleLimit=PAGE_SIZE;updateUrl();render();document.getElementById('biblioteca').scrollIntoView({behavior:'smooth',block:'start'});}
+function chooseSub(k){sub=k;visibleLimit=PAGE_SIZE;updateUrl();render();}
 function matching(){
   const arr=all.filter(a=>{
     if(category!=='all'&&a.category!==category)return false;
@@ -143,11 +147,26 @@ function makeCard(a){
   }else if(a.broken){
     const p=document.createElement('div');p.className='unavailable';p.textContent='⚠ Arquivo incompleto';stage.append(p);
   }else{
-    const p=document.createElement('div');p.className='preview-pending';p.textContent=enabled?'Preparando prévia 3D...':'Prévia desativada';stage.append(p);
-    if(enabled)queueObserve(thumb,a,stage);
+    const automatic=enabled&&a.bytes<=AUTO_PREVIEW_MAX_BYTES;
+    if(automatic){
+      const p=document.createElement('div');p.className='preview-pending';p.textContent='Preparando prévia 3D...';stage.append(p);
+      queueObserve(thumb,a,stage);
+    }else{
+      const holder=document.createElement('div');holder.className='preview-manual';
+      const info=document.createElement('span');
+      info.textContent=a.bytes>AUTO_PREVIEW_MAX_BYTES?'Prévia sob demanda • arquivo grande':'Prévia automática desligada';
+      const manual=makeButton('Gerar prévia','preview-on-demand',event=>{});
+      manual.removeEventListener('click',()=>{});
+      manual.addEventListener('click',event=>{
+        event.stopPropagation();
+        stage.replaceChildren(document.createTextNode('Carregando prévia real...'));
+        preparePreview(a,stage,true);
+      });
+      holder.append(info,manual);stage.append(holder);
+    }
   }
   const badge=document.createElement('span');badge.className='typepill'+(a.broken?' invalid':'');badge.textContent=a.broken?'ARQUIVO INVÁLIDO':a.ext.toUpperCase();
-  const caption=document.createElement('span');caption.className='previewcaption';caption.textContent=isArchive(a)?'Pacote compactado':a.broken?'Reenvie este arquivo':isImage(a)?'Imagem original':enabled?'Prévia do modelo real':'Modelo 3D';
+  const caption=document.createElement('span');caption.className='previewcaption';caption.textContent=isArchive(a)?'Pacote compactado':a.broken?'Reenvie este arquivo':isImage(a)?'Imagem original':(enabled&&a.bytes<=AUTO_PREVIEW_MAX_BYTES)?'Prévia do modelo real':'Modelo 3D • sob demanda';
   thumb.append(stage,badge,caption);
   if(!a.broken)thumb.addEventListener('click',()=>openAsset(a));
   if(!a.broken){thumb.style.cursor='pointer';thumb.title='Abrir '+titleFor(a);}
@@ -160,7 +179,9 @@ function makeCard(a){
   const size=document.createElement('span');size.textContent=formatSize(a.bytes);meta.append(type,size);
   const actions=document.createElement('div');actions.className='assetbuttons';
   const view=makeButton(isArchive(a)?'Detalhes':isImage(a)?'Ver imagem':'Visualizar 3D','',()=>openAsset(a));view.disabled=!!a.broken;
-  const download=document.createElement('a');download.href=urlFor(a);download.download=a.name;download.textContent='Baixar ↓';download.setAttribute('aria-label','Baixar '+a.name);
+  const download=document.createElement('a');
+  if(a.broken){download.textContent='Indisponível';download.className='download-disabled';download.setAttribute('aria-disabled','true');download.title='O arquivo está incompleto no repositório';}
+  else{download.href=urlFor(a);download.download=a.name;download.textContent='Baixar ↓';download.setAttribute('aria-label','Baixar '+a.name);}
   actions.append(view,download);body.append(folder,name,filename,meta,actions);card.append(thumb,body);return card;
 }
 function render(){
@@ -170,10 +191,18 @@ function render(){
   $('listTitle').textContent=catInfo?catInfo.label:'Todos os assets';
   $('breadcrumbs').textContent='Biblioteca / '+(catInfo?catInfo.label:'Todos')+(sub==='all'?'':' / '+subLabel(sub));
   renderFolders();renderSubs();
-  const data=matching();$('results').textContent=data.length+' arquivo'+(data.length===1?'':'s')+' encontrado'+(data.length===1?'':'s');
+  const data=matching(),visible=data.slice(0,visibleLimit);
+  $('results').textContent=data.length+' arquivo'+(data.length===1?'':'s')+' encontrado'+(data.length===1?'':'s')+' • exibindo '+visible.length;
   const root=$('grid');root.replaceChildren();const frag=document.createDocumentFragment();
-  for(const a of data)frag.append(makeCard(a));
+  for(const a of visible)frag.append(makeCard(a));
   if(!data.length){const p=document.createElement('p');p.className='empty';p.textContent='Nenhum asset encontrado. Tente outra pasta ou palavra-chave.';frag.append(p);}
+  if(data.length>visible.length){
+    const more=makeButton('Carregar mais '+Math.min(PAGE_SIZE,data.length-visible.length)+' assets','grid-more',()=>{
+      visibleLimit+=PAGE_SIZE;render();
+    });
+    more.setAttribute('aria-label','Exibir mais arquivos do catálogo');
+    frag.append(more);
+  }
   root.append(frag);
   statusText();
 }
@@ -190,15 +219,15 @@ function queueObserve(thumb,a,stage){
   // The element can be observed before it is attached to the document.
   observer.observe(thumb);
 }
-async function preparePreview(a,stage){
-  if(!enabled||!stage.isConnected)return;
+async function preparePreview(a,stage,force=false){
+  if((!enabled&&!force)||!stage.isConnected)return;
   const cached=await getCached(previewKey(a));
   if(!stage.isConnected)return;
   if(cached){showThumbnail(stage,cached,a);previewFinished++;statusText();return;}
-  if(!enabled)return;
+  if(!enabled&&!force)return;
   const key=previewKey(a);
   if(awaiting.has(key))return;
-  awaiting.add(key);previewQueue.push({a,stage,key});
+  awaiting.add(key);previewQueue.push({a,stage,key,force});
   statusText();runQueue();
 }
 function showThumbnail(stage,data,a){
@@ -207,10 +236,17 @@ function showThumbnail(stage,data,a){
   img.src=data;img.alt='Prévia real com texturas de '+titleFor(a);
   stage.replaceChildren(img);
 }
-function failThumb(stage,reason){
+function failThumb(stage,reason,a){
   if(!stage.isConnected)return;
-  const p=document.createElement('div');p.className='unavailable';p.textContent='Prévia indisponível — abra em 3D';
+  const p=document.createElement('div');p.className='unavailable';
+  p.textContent='Prévia indisponível';
   p.title=reason||'Não foi possível carregar o modelo';
+  const retry=makeButton('Tentar novamente','preview-on-demand',event=>{
+    event.stopPropagation();
+    stage.replaceChildren(document.createTextNode('Tentando novamente...'));
+    preparePreview(a,stage,true);
+  });
+  p.append(document.createElement('br'),retry);
   stage.replaceChildren(p);
 }
 function sleep(ms){return new Promise(resolve=>setTimeout(resolve,ms));}
@@ -272,10 +308,10 @@ async function runQueue(){
   try{
     while(previewQueue.length){
       const job=previewQueue.shift();
-      if(!enabled||!job.stage.isConnected){awaiting.delete(job.key);continue;}
+      if((!enabled&&!job.force)||!job.stage.isConnected){awaiting.delete(job.key);continue;}
       try{
         await waitForModelViewer();
-        if(!job.stage.isConnected){awaiting.delete(job.key);continue;}
+        if((!enabled&&!job.force)||!job.stage.isConnected){awaiting.delete(job.key);continue;}
         const m=makeModelViewer(job.a,false);
         job.stage.replaceChildren(m);
         const wait=untilLoaded(m);
@@ -286,7 +322,7 @@ async function runQueue(){
         showThumbnail(job.stage,screenshot,job.a);
         previewFinished++;
       }catch(error){
-        previewErrors++;failThumb(job.stage,String(error));
+        previewErrors++;failThumb(job.stage,String(error),job.a);
       }finally{
         awaiting.delete(job.key);
         statusText();
@@ -314,7 +350,7 @@ function openAsset(a){
     const img=document.createElement('img');img.src=urlFor(a);img.alt=titleFor(a);vp.append(img);
     setHint('Imagem original do repositório.');return;
   }
-  setHint('Carregando o modelo GLB original e suas texturas…');
+  setHint('Carregando o modelo GLB original e suas texturas…'+(a.bytes>AUTO_PREVIEW_MAX_BYTES?' Arquivo grande: o download pode consumir muitos dados.':''));
   waitForModelViewer().then(async()=>{
     if(current!==a||!vp.isConnected||!$('viewer').open)return;
     const m=makeModelViewer(a,true);modalModel=m;
@@ -359,10 +395,11 @@ $('copy').addEventListener('click',async()=>{
   try{await navigator.clipboard.writeText(urlFor(current));$('copy').textContent='Copiado!';setTimeout(()=>$('copy').textContent='Copiar link',1800);}
   catch{window.prompt('Copie o link:',urlFor(current));}
 });
-$('search').addEventListener('input',event=>{search=normalize(event.target.value.trim());render();});
-$('kind').addEventListener('change',event=>{kind=event.target.value;render();});
-$('sort').addEventListener('change',event=>{sort=event.target.value;render();});
+$('search').addEventListener('input',event=>{search=normalize(event.target.value.trim());visibleLimit=PAGE_SIZE;render();});
+$('kind').addEventListener('change',event=>{kind=event.target.value;visibleLimit=PAGE_SIZE;render();});
+$('sort').addEventListener('change',event=>{sort=event.target.value;visibleLimit=PAGE_SIZE;render();});
 $('autoPreview').addEventListener('change',event=>{enabled=event.target.checked;try{localStorage.setItem('rexx-auto-preview',String(enabled));}catch{}render();});
+window.addEventListener('popstate',()=>{readUrl();visibleLimit=PAGE_SIZE;render();});
 (async()=>{
   try{const saved=localStorage.getItem('rexx-auto-preview');if(saved!==null)enabled=saved==='true';}
   catch{}

@@ -68,6 +68,11 @@ select{color:#e5eeff;background:#152339;border:1px solid #344861;border-radius:8
 .thumb-stage .archive-symbol{font-size:64px}
 .thumb-stage .unavailable{font-size:13px;color:#efc699;text-align:center;padding:15px}
 .thumb-stage .preview-pending{font-size:12px;color:#a9c3d8;text-align:center;padding:14px}
+.preview-manual{display:flex;flex-direction:column;align-items:center;gap:10px;padding:18px;text-align:center;color:#bcd0e1;font-size:12px}
+.preview-on-demand{border:1px solid #68bda4;border-radius:8px;padding:7px 11px;color:#dcfff3;background:#1d5549;font-size:12px;font-weight:750;cursor:pointer}
+.preview-on-demand:hover,.preview-on-demand:focus-visible{background:#2d7461;outline-offset:3px}
+.grid-more{grid-column:1/-1;min-height:48px;border:1px solid #3c786c;background:#173a38;border-radius:12px;color:#b6ffe1;font-weight:750;cursor:pointer}
+.grid-more:hover,.grid-more:focus-visible{background:#24534b;outline-offset:3px}
 .typepill{position:absolute;top:11px;left:11px;padding:4px 8px;font-size:10px;letter-spacing:.06em;font-weight:750;background:#081426d9;border:1px solid #3e6076;border-radius:6px;color:var(--mint)}
 .typepill.invalid{color:#ffcf8c;border-color:#98694c}
 .previewcaption{position:absolute;bottom:0;left:0;right:0;text-align:center;font-size:10px;pointer-events:none;background:linear-gradient(transparent,#07111fe0);padding:18px 6px 7px;color:#bcd0e1}
@@ -83,6 +88,7 @@ select{color:#e5eeff;background:#152339;border:1px solid #344861;border-radius:8
 .assetbuttons button:disabled{cursor:not-allowed;opacity:.55}
 .assetbuttons a{background:#253750;border-color:#384f6b;color:#e1ecf5}
 .assetbuttons a:hover{border-color:var(--mint)}
+.assetbuttons .download-disabled{background:#1c293c;border-color:#324158;color:#7f90a5;cursor:not-allowed;pointer-events:none}
 .footnote{font-size:11px;color:#849bb4;max-width:820px;line-height:1.6;margin-top:22px}
 .empty{grid-column:1/-1;border:1px dashed #3e5571;border-radius:14px;color:#b0c1d4;padding:55px 15px;text-align:center}
 dialog{color:var(--ink);background:#101c2d;padding:0;border:1px solid #425a70;border-radius:19px;width:min(1020px,calc(100% - 24px));max-height:calc(100dvh - 20px);box-shadow:0 28px 100px #000e}
@@ -100,6 +106,7 @@ dialog::backdrop{background:#020810df;backdrop-filter:blur(5px)}
 .primary{background:var(--mint);color:#092221}.primary:hover{background:#b5ffe4}
 footer{text-align:center;color:#7488a2;font-size:11px;border-top:1px solid #26374b;padding:25px 12px}
 footer span{padding:0 7px;color:#5b768e}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.asset,.folderitem,.subcat{transition:none}.asset:hover{transform:none}}
 @media(max-width:1100px){.heroart{width:220px}.cube{font-size:130px}.orbit{width:200px}.orbit.two{width:230px}.library{grid-template-columns:185px minmax(0,1fr);gap:18px}.grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}}
 @media(max-width:790px){.topbar,.wrap{padding-left:16px;padding-right:16px}.hero{padding:35px 0}.heroart{display:none}.library{display:block}.sidebar{border-right:0;padding-right:0;padding-top:24px}.sideheading h2{margin-bottom:12px}.foldernav{display:flex;flex-direction:row;overflow-x:auto;gap:7px;padding-bottom:10px;scrollbar-width:thin}.folderitem{width:auto;flex:0 0 auto;padding:8px 12px}.foldercount{display:none}.sideinfo{display:none}.content{padding-top:20px}.cataloghead{align-items:stretch;flex-direction:column}.searchbox{width:100%}.subcategories{margin:17px 0}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.assetbody{padding:11px}.thumb{height:160px}.asset h3{font-size:13px}.assetbuttons{flex-direction:column}.asset .filename{font-size:10px}.toolbar{align-items:flex-start}.toolbarcontrols{gap:8px}}
 @media(max-width:440px){.headerlinks{gap:12px;font-size:11px}.brand{font-size:15px}.logo{font-size:32px}.stats{gap:18px}.stats strong{font-size:22px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.thumb{height:135px}.asset h3{min-height:52px}.asset .filename{min-height:29px}.assetbuttons button,.assetbuttons a{font-size:11px;padding:8px 4px}.toolbarcontrols{width:100%}.toolbar select{max-width:160px}.modalbar,.modalfooter,.viewhint{padding-left:14px;padding-right:14px}}
