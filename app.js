@@ -20,7 +20,7 @@ const SUBNAMES={
   personagens:'Personagens',dragoes:'Dragões',dinossauros:'Dinossauros',
   regina:'Regina',animais:'Animais',monstros:'Monstros',
   mapas:'Mapas',objetos:'Objetos',plantas:'Plantas',machados:'Machados',
-  'driver-2':'Driver 2',outros:'Outros personagens'
+  'driver-2':'Driver 2',outros:'Outros personagens','armas-de-fogo':'Armas de fogo'
 };
 const $=id=>document.getElementById(id);
 const normalize=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
@@ -155,9 +155,7 @@ function makeCard(a){
       const holder=document.createElement('div');holder.className='preview-manual';
       const info=document.createElement('span');
       info.textContent=a.bytes>AUTO_PREVIEW_MAX_BYTES?'Prévia sob demanda • arquivo grande':'Prévia automática desligada';
-      const manual=makeButton('Gerar prévia','preview-on-demand',event=>{});
-      manual.removeEventListener('click',()=>{});
-      manual.addEventListener('click',event=>{
+      const manual=makeButton('Gerar prévia','preview-on-demand',event=>{
         event.stopPropagation();
         stage.replaceChildren(document.createTextNode('Carregando prévia real...'));
         preparePreview(a,stage,true);
