@@ -5,6 +5,7 @@
  * No thumbnail is fabricated from a filename or stock image.
  */
 const CATEGORIES={
+  novidades:{label:'Novos envios',icon:'📁'},
   veiculos:{label:'Veículos',icon:'🚗'},
   chaves:{label:'Turma do Chaves',icon:'🏠'},
   dragoes:{label:'Dragões',icon:'🐉'},
@@ -16,6 +17,7 @@ const CATEGORIES={
   armas:{label:'Armas e itens',icon:'🪓'}
 };
 const SUBNAMES={
+  'a-classificar':'A classificar',
   carros:'Carros',utilitarios:'Utilitários',pacotes:'Pacotes',
   personagens:'Personagens',dragoes:'Dragões',dinossauros:'Dinossauros',
   regina:'Regina',animais:'Animais',monstros:'Monstros',
@@ -36,7 +38,13 @@ function formatSize(bytes){return bytes>=1e6?(bytes/1e6).toFixed(1)+' MB':bytes>
 function isImage(a){return /^(png|jpg|jpeg|webp|gif|avif|svg)$/i.test(a.ext);}
 function isArchive(a){return /^(zip|rar|7z)$/i.test(a.ext);}
 function typeFor(a){return isImage(a)?'image':isArchive(a)?'archive':'glb';}
-function urlFor(a){return new URL(a.path.split('/').map(encodeURIComponent).join('/'),document.baseURI).href;}
+// Source assets remain at their original paths in the GitHub repository.
+// Only metadata and interface files belong in the GitHub Pages deployment.
+const REPO_RAW='https://raw.githubusercontent.com/jogoiarexx-blip/assets-3d-pra-jogos-glb/main/';
+const REPO_DOWNLOAD='https://github.com/jogoiarexx-blip/assets-3d-pra-jogos-glb/raw/refs/heads/main/';
+function encodedAssetPath(a){return a.path.split('/').map(encodeURIComponent).join('/');}
+function urlFor(a){return REPO_RAW+encodedAssetPath(a);}
+function downloadFor(a){return REPO_DOWNLOAD+encodedAssetPath(a);}
 function previewKey(a){return a.sha||a.legacyPath||a.path;}
 function titleFor(a){return a.title||a.name.replace(/\.[^.]+$/,'').replace(/^Meshy_AI_/i,'').replace(/_texture$/i,'').replace(/_\d{10}$/,'').replace(/_/g,' ');}
 function subLabel(k){return SUBNAMES[k]||k;}
@@ -179,7 +187,7 @@ function makeCard(a){
   const view=makeButton(isArchive(a)?'Detalhes':isImage(a)?'Ver imagem':'Visualizar 3D','',()=>openAsset(a));view.disabled=!!a.broken;
   const download=document.createElement('a');
   if(a.broken){download.textContent='Indisponível';download.className='download-disabled';download.setAttribute('aria-disabled','true');download.title='O arquivo está incompleto no repositório';}
-  else{download.href=urlFor(a);download.download=a.name;download.textContent='Baixar ↓';download.setAttribute('aria-label','Baixar '+a.name);}
+  else{download.href=downloadFor(a);download.target='_blank';download.rel='noopener noreferrer';download.textContent='Baixar ↓';download.setAttribute('aria-label','Baixar '+a.name+' pelo GitHub');}
   actions.append(view,download);body.append(folder,name,filename,meta,actions);card.append(thumb,body);return card;
 }
 function render(){
@@ -335,7 +343,7 @@ function openAsset(a){
   $('viewCategory').textContent=categoryLabel(a.category)+' / '+subLabel(a.subCategory);
   $('viewName').textContent=titleFor(a);$('viewFilename').textContent=a.name;
   $('viewInfo').textContent=a.ext.toUpperCase()+' · '+formatSize(a.bytes);
-  $('download').href=urlFor(a);$('download').download=a.name;
+  $('download').href=downloadFor(a);
   $('rotate').hidden=true;$('snapshot').hidden=true;
   const vp=$('viewport');vp.replaceChildren();
   $('viewer').showModal();
@@ -405,7 +413,7 @@ window.addEventListener('popstate',()=>{readUrl();visibleLimit=PAGE_SIZE;render(
   $('autoPreview').checked=enabled;
   readUrl();
   try{
-    const response=await fetch('./catalogo.json?v=2',{cache:'no-store'});
+    const response=await fetch('./catalogo.json?v=4',{cache:'no-store'});
     if(!response.ok)throw Error('HTTP '+response.status);
     all=await response.json();
     if(!Array.isArray(all))throw Error('Catálogo inválido');

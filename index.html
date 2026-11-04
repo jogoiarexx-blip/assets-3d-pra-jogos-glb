@@ -6,9 +6,9 @@
   <meta name="theme-color" content="#090f1d">
   <meta name="description" content="Catálogo organizado de modelos 3D GLB para jogos: prévias reais com textura, subpastas, filtros e downloads.">
   <title>REXX Assets — Biblioteca de modelos 3D</title>
-  <link rel="stylesheet" href="./style.css?v=3">
+  <link rel="stylesheet" href="./style.css?v=4">
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>
-  <script src="./app.js?v=3" defer></script>
+  <script src="./app.js?v=4" defer></script>
 </head>
 <body>
 <header class="topbar">
@@ -51,7 +51,7 @@
       </div>
       <div id="previewStatus" class="previewstatus" aria-live="polite"></div>
       <div id="grid" class="grid"></div>
-      <p class="footnote">Miniaturas dos GLBs são criadas a partir dos próprios arquivos, não são imagens ilustrativas. Para evitar downloads pesados, modelos acima de 18 MiB exigem clicar em <strong>Gerar prévia</strong>. Miniaturas geradas ficam salvas neste navegador. ZIP/RAR mostram apenas o tipo de arquivo.</p>
+      <p class="footnote">Miniaturas dos GLBs são criadas a partir dos próprios arquivos, não são imagens ilustrativas. Para evitar downloads pesados, modelos acima de 18 MiB exigem clicar em <strong>Gerar prévia</strong>. Os arquivos originais ficam no GitHub e são baixados só quando necessários. O GitHub Pages publica somente a interface e o catálogo. Miniaturas geradas ficam salvas neste navegador. ZIP/RAR mostram apenas o tipo de arquivo.</p>
     </div>
   </section>
 </main>
@@ -64,7 +64,7 @@
   <div id="viewHint" class="viewhint">Arraste para girar, use a roda para aproximar.</div>
   <div class="modalfooter">
     <div id="viewInfo" class="fileinfo"></div>
-    <div class="actions"><button type="button" id="rotate" class="outline" hidden>⟳ Girar</button><button type="button" id="snapshot" class="outline" hidden>Salvar imagem</button><button type="button" id="copy" class="outline">Copiar link</button><a id="download" class="primary" download>Baixar arquivo ↓</a></div>
+    <div class="actions"><button type="button" id="rotate" class="outline" hidden>⟳ Girar</button><button type="button" id="snapshot" class="outline" hidden>Salvar imagem</button><button type="button" id="copy" class="outline">Copiar link</button><a id="download" class="primary" target="_blank" rel="noopener noreferrer">Baixar arquivo ↓</a></div>
   </div>
 </dialog>
 <footer>REXX ASSETS <span>•</span> Biblioteca de modelos para jogos <span>•</span> Organizado por pastas</footer>

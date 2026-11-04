@@ -1,40 +1,37 @@
 # REXX Assets — biblioteca 3D
 
-[**Abrir o visualizador e a biblioteca**](https://jogoiarexx-blip.github.io/assets-3d-pra-jogos-glb/)
+[**Abrir a biblioteca**](https://jogoiarexx-blip.github.io/assets-3d-pra-jogos-glb/)
 
-## Organização
+## Publicação leve
 
-Os modelos e pacotes estão distribuídos em 9 categorias e 16 subpastas dentro de `assets/`. Os arquivos antigos na raiz e em `assets/<categoria>/<arquivo>` permanecem disponíveis, de modo que jogos existentes não perdem seus links. Os arquivos em novas pastas compartilham os mesmos objetos Git, sem duplicar conteúdo binário no histórico.
+O código do catálogo é publicado no GitHub Pages sem incluir nenhum GLB, ZIP ou RAR no artefato do site. O modelo original continua **no mesmo caminho do repositório** `main`; prévias e downloads consultam o GitHub apenas quando solicitados. A publicação é feita pelo workflow [pages-light.yml](.github/workflows/pages-light.yml).
 
-- `assets/armas/machados/` — 1 arquivos
-- `assets/cenarios/mapas/` — 2 arquivos
-- `assets/cenarios/objetos/` — 1 arquivos
-- `assets/chaves/personagens/` — 4 arquivos
-- `assets/criaturas/monstros/` — 5 arquivos
-- `assets/criaturas/animais/` — 2 arquivos
-- `assets/dinossauros/dinossauros/` — 3 arquivos
-- `assets/dinossauros/regina/` — 3 arquivos
-- `assets/dragoes/personagens/` — 3 arquivos
-- `assets/dragoes/dragoes/` — 3 arquivos
-- `assets/natureza/plantas/` — 1 arquivos
-- `assets/personagens/outros/` — 11 arquivos
-- `assets/personagens/driver-2/` — 5 arquivos
-- `assets/veiculos/utilitarios/` — 2 arquivos
-- `assets/veiculos/carros/` — 5 arquivos
-- `assets/veiculos/pacotes/` — 1 arquivos
+O fluxo:
+1. Checkout esparso dos HTML, CSS, JS, JSON e script de geração (sem baixar binários).
+2. Verificação de sintaxe JS e consistência de nome, caminho, tamanho e SHA de cada item curado via `git ls-tree`.
+3. Descoberta automática de novos GLB, imagens e pacotes que ainda não estejam no catálogo. Arquivos da raiz novos aparecem na categoria **Novos envios / A classificar**.
+4. Geração de `_site/` com cinco arquivos estáticos, abaixo de 1 MiB.
+5. Deploy com GitHub Actions para Pages.
 
-## Prévia verdadeira
+### Configurar a origem de publicação
 
-Os cards mostram **imagens reais renderizadas a partir dos GLBs**, usando `model-viewer`. Como os arquivos são grandes, as miniaturas são geradas uma por vez quando aparecem na tela e ficam guardadas no **IndexedDB do navegador**. A primeira visita exige baixar e renderizar o GLB. Clique em **Visualizar 3D** para examinar os modelos, girar, ampliar, controlar animações e **Salvar imagem**. Imagens WebP são exibidas diretamente. ZIP/RAR são identificados como pacotes e não têm prévia interna.
+No repositório, acesse **Settings → Pages → Build and deployment → Source → GitHub Actions**. Enquanto a origem continuar configurada para `main /(root)`, o build padrão do Pages pode continuar tentando publicar todos os arquivos do repositório. O workflow de site leve exige essa configuração para ser a origem oficial da publicação.
 
-A opção **Prévias reais** pode ser desligada. Em conexões com economia de dados, o carregamento automático é desligado.
+## Compatibilidade dos links antigos
 
-## Adicionando um novo asset
+- **Nenhum binário original foi apagado, movido ou renomeado.** URLs de arquivo no GitHub e em `raw.githubusercontent.com` com os caminhos originais permanecem válidas.
+- A interface passa a usar arquivos externos em `https://raw.githubusercontent.com/jogoiarexx-blip/assets-3d-pra-jogos-glb/main/<caminho-escapado>`, mantendo as subpastas.
+- **Importante:** links diretos antigos sob `https://jogoiarexx-blip.github.io/assets-3d-pra-jogos-glb/<arquivo.glb>` **não serão servidos** pelo Pages leve. Jogos que referenciem esses links devem migrar para as URLs de arquivos no GitHub. Um site estático não consegue preservar a resposta binária de URLs excluídas sem uma camada externa de redirecionamento/proxy apropriada.
+- O atributo `download` do HTML não é garantido entre domínios; o botão **Baixar** abre o download do GitHub em outra aba. **Copiar link** fornece a URL raw para integração em projetos.
 
-Adicione o arquivo à pasta apropriada e registre-o em `catalogo.json`, incluindo `name`, `title`, `path`, `category`, `subCategory`, `ext`, `sha`, `bytes` e `broken`. O campo SHA garante a atualização do cache quando o modelo muda.
+## Catálogo e prévias
 
-## Notas
+- 64 arquivos registrados manualmente, distribuídos em nove categorias originais.
+- Novos arquivos são indexados no build sem necessidade de editar JSON. Para títulos/categorias definitivos, registre-os no `catalogo.json` com SHA e tamanho correspondentes.
+- Miniaturas GLB são renderizadas pelo `model-viewer`, uma por vez, e guardadas no IndexedDB do navegador.
+- GLBs acima de 18 MiB só recebem miniatura sob demanda; imagens WebP aparecem como imagem.
+- `car police.glb` tem 2 bytes, permanece marcado como danificado e não deve ser usado.
 
-- `car police.glb` tem somente 2 bytes e está sinalizado como danificado.
-- Site estático GitHub Pages: branch `main`, diretório `/(root)`.
-- Renderização real requer WebGL e acesso ao script do model-viewer. Alguns arquivos muito grandes podem levar tempo para aparecer.
+## Limitações e próximos passos
+
+O GitHub Pages tem limite documentado de 1 GB para o **site publicado** e o repositório de origem tem recomendação de 1 GB. Esta estratégia reduz o artefato publicado, mas **não reduz o tamanho do repositório Git nem seu histórico**. Para produção de alta demanda, considere armazenamento/CDN próprio para GLBs, com CORS e cache configurados, ou migrar arquivos para GitHub Releases (com testes de CORS e downloads). A renderização no navegador depende de WebGL, rede e acesso a `model-viewer`.

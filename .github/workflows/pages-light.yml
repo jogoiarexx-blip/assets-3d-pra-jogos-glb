@@ -1,0 +1,66 @@
+name: Publicar REXX Assets (Pages leve)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: rexx-assets-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout apenas do site e metadados
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            index.html
+            app.js
+            style.css
+            catalogo.json
+            scripts/build-catalog.cjs
+          sparse-checkout-cone-mode: false
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar JavaScript e validar assets sem baixar GLBs
+        run: |
+          node --check app.js
+          node --check scripts/build-catalog.cjs
+          node scripts/build-catalog.cjs
+      - name: Montar pacote leve
+        shell: bash
+        run: |
+          cp index.html app.js style.css _site/
+          touch _site/.nojekyll
+          test "$(find _site -type f | wc -l)" -eq 5
+          test "$(du -sb _site | cut -f1)" -lt 1048576
+          du -sh _site
+          find _site -type f -print
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Enviar apenas o site (sem binários)
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar site leve no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
