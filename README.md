@@ -4,7 +4,7 @@
 
 ## Publicação leve
 
-O código do catálogo é publicado no GitHub Pages sem incluir nenhum GLB, ZIP ou RAR no artefato do site. O modelo original continua **no mesmo caminho do repositório** `main`; prévias e downloads consultam o GitHub apenas quando solicitados. A publicação é feita pelo workflow [pages-light.yml](.github/workflows/pages-light.yml).
+O código do catálogo é publicado no GitHub Pages sem incluir nenhum GLB, ZIP ou RAR no artefato do site. Cada modelo original continua **em seu caminho canônico do repositório** `main`; prévias e downloads consultam o GitHub apenas quando solicitados. A publicação é feita pelo workflow [pages-light.yml](.github/workflows/pages-light.yml).
 
 O fluxo:
 1. Checkout esparso dos HTML, CSS, JS, JSON e script de geração (sem baixar binários).
@@ -19,14 +19,14 @@ No repositório, acesse **Settings → Pages → Build and deployment → Source
 
 ## Compatibilidade dos links antigos
 
-- **Nenhum binário original foi apagado, movido ou renomeado.** URLs de arquivo no GitHub e em `raw.githubusercontent.com` com os caminhos originais permanecem válidas.
+- **Cada arquivo binário possui uma única cópia preservada**, no caminho canônico registrado em `catalogo.json`. Em 6/11/2026 foram removidas 106 cópias SHA-idênticas, mantendo 53 assets distintos. URLs antigas que apontavam para as cópias eliminadas deixam de funcionar; utilize o caminho `path` do catálogo.
 - A interface passa a usar arquivos externos em `https://raw.githubusercontent.com/jogoiarexx-blip/assets-3d-pra-jogos-glb/main/<caminho-escapado>`, mantendo as subpastas.
 - **Importante:** links diretos antigos sob `https://jogoiarexx-blip.github.io/assets-3d-pra-jogos-glb/<arquivo.glb>` **não serão servidos** pelo Pages leve. Jogos que referenciem esses links devem migrar para as URLs de arquivos no GitHub. Um site estático não consegue preservar a resposta binária de URLs excluídas sem uma camada externa de redirecionamento/proxy apropriada.
 - O atributo `download` do HTML não é garantido entre domínios; o botão **Baixar** abre o download do GitHub em outra aba. **Copiar link** fornece a URL raw para integração em projetos.
 
 ## Catálogo e prévias
 
-- 64 arquivos registrados manualmente, distribuídos em nove categorias originais.
+- 64 arquivos registrados manualmente, distribuídos em nove categorias originais, sem cópias binárias duplicadas no estado atual do repositório.
 - Novos arquivos são indexados no build sem necessidade de editar JSON. Para títulos/categorias definitivos, registre-os no `catalogo.json` com SHA e tamanho correspondentes.
 - Miniaturas GLB são renderizadas pelo `model-viewer`, uma por vez, e guardadas no IndexedDB do navegador.
 - GLBs acima de 18 MiB só recebem miniatura sob demanda; imagens WebP aparecem como imagem.
