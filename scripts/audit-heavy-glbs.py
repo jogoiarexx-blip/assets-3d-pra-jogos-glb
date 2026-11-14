@@ -59,4 +59,32 @@ lines += ['','## Regras para uma otimização futura','',
           '3. Testar arquivos candidatos isoladamente em navegadores desktop e celular.',
           '4. Nunca substituir modelos automaticamente: exigir comparação e aprovação antes de publicar.']
 Path('audit-results.md').write_text('\n'.join(lines)+'\n',encoding='utf8')
-print('Relatório criado: audit-results.md / audit-results.json')
+lines += ['', '## Prioridades de análise por modelo', '',
+          'Esta é uma lista de oportunidades de estudo, não uma previsão garantida de economia.']
+for item in results:
+    path=item['path']
+    if 'error' in item:
+        lines += ['', '### '+path, 'Arquivo não auditado: '+item['error']]
+        continue
+    ratio=item['embeddedTextureBytes']/max(1,item['bytes'])
+    risks=[]
+    if item['skins']: risks.append(str(item['skins'])+' skin(s)/rig')
+    if item['animations']: risks.append(str(item['animations'])+' animação(ões)')
+    if item['morphTargets']: risks.append(str(item['morphTargets'])+' morph target(s)')
+    advice=[]
+    if ratio>=0.4:
+        advice.append('Texturas embutidas dominam o peso: conferir dimensões, compressão e UVs antes de mexer na geometria.')
+    if item['estimatedTriangles']>120000:
+        advice.append('Geometria densa: comparar uma cópia com simplificação gradual e verificar deformações nas animações.')
+    if not advice:
+        advice.append('Inspecionar materiais, texturas e buffers; não presumir que reduzir polígonos ajudará.')
+    lines += ['', '### '+path,
+              '- Tamanho original: '+str(item['weightMiB'])+' MiB; triângulos aproximados: '+str(item['estimatedTriangles'])+'.',
+              '- Participação de imagens embutidas: '+str(round(ratio*100,1))+'%; cuidados: '+(', '.join(risks) if risks else 'sem rig/animação detectados')+'.',
+              '- Próximo teste seguro: '+' '.join(advice)]
+lines += ['', '**Proibição de substituição automática:** os GLBs originais, texturas, UVs, rig e animações permanecem intactos.',
+          'O pipeline faz somente leitura e publica este relatório, sem gerar GLBs substitutos.']
+Path('reports').mkdir(exist_ok=True)
+Path('reports/glb-audit.json').write_text(json.dumps(results,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+Path('reports/glb-audit.md').write_text('\n'.join(lines)+'\n',encoding='utf8')
+print('Relatório criado: reports/glb-audit.md / reports/glb-audit.json')

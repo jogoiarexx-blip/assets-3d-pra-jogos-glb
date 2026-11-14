@@ -31,6 +31,7 @@ jobs:
             scripts/build-preview-manifest.cjs
             scripts/test-site.cjs
             scripts/audit-glb.cjs
+            reports/preview-quality.json
             previews
           sparse-checkout-cone-mode: false
       - name: Configurar Node.js

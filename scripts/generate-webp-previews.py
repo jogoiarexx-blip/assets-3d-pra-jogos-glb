@@ -9,12 +9,14 @@ from pathlib import Path
 from urllib.parse import quote
 
 from PIL import Image, ImageOps, ImageStat
+from strip_glb_animations import without_animations
 
 BASE = 'https://raw.githubusercontent.com/jogoiarexx-blip/assets-3d-pra-jogos-glb/main/'
 CATALOG = Path('_site/catalogo.json')
 PREVIEWS = Path('previews')
 MAX_SOURCE_BYTES = 32 * 1024 * 1024
 MAX_THUMB_BYTES = 80 * 1024
+MIN_THUMB_BYTES = 550
 LIMIT = min(100, max(1, int(os.environ.get('PREVIEW_LIMIT', '80'))))
 PREVIEWS.mkdir(parents=True, exist_ok=True)
 
@@ -40,6 +42,22 @@ def download(asset, output):
             time.sleep(attempt + 1)
     raise RuntimeError(str(error))
 
+def image_looks_usable(output):
+    if not Path(output).is_file() or Path(output).stat().st_size < MIN_THUMB_BYTES:
+        return False
+    try:
+        with Image.open(output) as pic:
+            return pic.format=='WEBP' and pic.width>=200 and ImageStat.Stat(pic.convert('L')).stddev[0]>=1.5
+    except Exception:
+        return False
+
+def render_blender(source, output):
+    command = ['xvfb-run', '-a', 'blender', '-b', '-t', '2', '--python-exit-code', '1', '--python',
+               'scripts/render-preview-blender.py', '--', str(source), str(output)]
+    result = subprocess.run(command, capture_output=True, text=True, timeout=130)
+    if result.returncode != 0 or not output.is_file():
+        raise RuntimeError('Blender falhou (exit='+str(result.returncode)+'):\n'+(result.stdout+'\n'+result.stderr)[-1800:])
+
 def webp_from_png(png, output):
     with Image.open(png) as original:
         img = ImageOps.pad(original.convert('RGB'), (320, 232), color='#161e2c')
@@ -58,13 +76,15 @@ def webp_from_png(png, output):
                 raise ValueError('WebP gerado é inválido')
         if Path(output).stat().st_size > MAX_THUMB_BYTES:
             raise ValueError('WebP excede 80 KiB')
+        if not image_looks_usable(output):
+            raise ValueError('Miniatura com pouco detalhe ou sem o objeto; não publicar')
 
 def main():
     items = json.loads(CATALOG.read_text(encoding='utf-8'))
     assets = [a for a in items if a.get('ext') == 'glb' and not a.get('broken')
               and 100 < a.get('bytes', 0) <= MAX_SOURCE_BYTES and len(a.get('sha', '')) >= 20]
     assets.sort(key=lambda a: (a['bytes'], a['path']))
-    pending = [a for a in assets if not (PREVIEWS / (a['sha'][:20]+'.webp')).exists()]
+    pending = [a for a in assets if not image_looks_usable(PREVIEWS / (a['sha'][:20]+'.webp'))]
     pending = pending[:LIMIT]
     success = 0
     failed = []
@@ -78,17 +98,24 @@ def main():
                 glb = Path(temp) / 'model.glb'
                 png = Path(temp) / 'preview.png'
                 download(asset, glb)
-                command = ['xvfb-run', '-a', 'blender', '-b', '-t', '2', '--python-exit-code', '1', '--python',
-                           'scripts/render-preview-blender.py', '--', str(glb), str(png)]
-                result = subprocess.run(command, capture_output=True, text=True, timeout=130)
-                if result.returncode != 0 or not png.is_file():
-                    raise RuntimeError('Blender falhou (exit='+str(result.returncode)+'):\n'+(result.stdout+'\n'+result.stderr)[-2500:])
-                webp_from_png(png, final)
+                try:
+                    render_blender(glb, png)
+                except Exception as primary_error:
+                    static=Path(temp)/'thumbnail-static.glb'
+                    try:
+                        removed=without_animations(glb, static)
+                        print(f'Importação animada falhou ({name}); tentando cópia estática sem {removed} animações.',flush=True)
+                        render_blender(static, png)
+                    except Exception as fallback_error:
+                        raise RuntimeError(f'{primary_error}; fallback estático: {fallback_error}') from fallback_error
+                output=Path(temp)/'render.webp'
+                webp_from_png(png, output)
+                output.replace(final)
             success += 1
             consecutive_failures = 0
             print(f'[{number}/{len(pending)}] OK {name}: {final.stat().st_size} bytes', flush=True)
         except Exception as ex:
-            final.unlink(missing_ok=True)
+            # Keep any previous thumbnail untouched until a replacement passes validation.
             failed.append({'path': name, 'error': str(ex)[-450:]})
             consecutive_failures += 1
             print(f'[{number}/{len(pending)}] FALHA {name}: {ex}', flush=True)

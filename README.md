@@ -36,6 +36,13 @@ No repositório, acesse **Settings → Pages → Build and deployment → Source
 
 O GitHub Pages tem limite documentado de 1 GB para o **site publicado** e o repositório de origem tem recomendação de 1 GB. Esta estratégia reduz o artefato publicado, mas **não reduz o tamanho do repositório Git nem seu histórico**. Para produção de alta demanda, considere armazenamento/CDN próprio para GLBs, com CORS e cache configurados, ou migrar arquivos para GitHub Releases (com testes de CORS e downloads). A renderização no navegador depende de WebGL, rede e acesso a `model-viewer`.
 
+## Próxima etapa: saúde das miniaturas e auditoria técnica
+
+- O workflow de prévias agora avalia **qualidade mínima** do WebP e não publica miniaturas suspeitas, pequenas demais ou com contraste quase nulo. Essas imagens são regeneradas em uma cópia temporária do modelo.
+- Se um GLB possui animação incompatível com o importador do Blender, o pipeline pode criar um **GLB temporário apenas para renderizar a imagem estática**, omitindo animações nessa cópia. O original permanece intacto, com suas animações e rig originais.
+- O relatório da qualidade das prévias fica em [reports/preview-quality.md](reports/preview-quality.md) após a execução do GitHub Actions.
+- O relatório dos maiores GLBs fica em [reports/glb-audit.md](reports/glb-audit.md) depois da auditoria automática; ela lista riscos de texturas, rig, animações e geometria para orientar otimizações futuras.
+
 ## Otimização segura (auditoria, sem reescrever modelos)
 
 - Executar o workflow **Auditar GLBs pesados** (`audit-glbs.yml`) pelo Actions para inspecionar os maiores arquivos e baixar um relatório JSON/Markdown.

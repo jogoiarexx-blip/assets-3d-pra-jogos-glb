@@ -49,7 +49,11 @@ view = Vector((1.45, -1.85, 1.1)).normalized()
 camera.location = center + view * longest * 3.1
 camera.rotation_euler = (center - camera.location).to_track_quat('-Z', 'Y').to_euler()
 camera_data.type = 'ORTHO'
-camera_data.ortho_scale = max(size.z * 1.7, size.x * 1.4, size.y * 1.4, longest * 1.55, 0.5)
+# GLBs can use very large or very small coordinates; default camera clip_end
+# silently renders an empty thumbnail for some perfectly valid models.
+camera_data.clip_start = max(0.001, longest * 0.00005)
+camera_data.clip_end = max(1000, longest * 50)
+camera_data.ortho_scale = max(size.z * 1.9, size.x * 1.6, size.y * 1.6, longest * 1.75, 0.5)
 scene.camera = camera
 
 def add_light(name, offset, power, scale):

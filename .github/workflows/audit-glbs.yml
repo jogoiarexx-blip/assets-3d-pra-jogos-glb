@@ -1,6 +1,12 @@
 name: Auditar GLBs pesados (sem modificar originais)
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/audit-heavy-glbs.py'
+      - 'scripts/audit-glb.cjs'
+      - '.github/workflows/audit-glbs.yml'
   workflow_dispatch:
     inputs:
       quantidade:
@@ -15,7 +21,7 @@ on:
           - '62'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   audit:
@@ -30,6 +36,7 @@ jobs:
           sparse-checkout: |
             catalogo.json
             scripts
+            reports
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -42,7 +49,7 @@ jobs:
           node scripts/build-catalog.cjs
       - name: Inspecionar GLBs sem modificar arquivos
         env:
-          AUDIT_LIMIT: ${{ inputs.quantidade }}
+          AUDIT_LIMIT: ${{ inputs.quantidade || '12' }}
         run: python scripts/audit-heavy-glbs.py
       - name: Guardar relatório para baixar
         uses: actions/upload-artifact@v4
@@ -51,3 +58,19 @@ jobs:
           path: |
             audit-results.json
             audit-results.md
+
+      - name: Publicar relatório Markdown e JSON sem alterar GLBs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          git add reports/glb-audit.md reports/glb-audit.json
+          if git diff --cached --quiet; then
+            echo "Relatório não mudou"
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m "docs: atualizar auditoria técnica de GLBs pesados"
+          git pull --rebase origin main
+          git push origin HEAD:main

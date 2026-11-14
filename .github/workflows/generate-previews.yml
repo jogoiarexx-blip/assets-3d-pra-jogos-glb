@@ -7,6 +7,8 @@ on:
     paths:
       - 'scripts/generate-webp-previews.py'
       - 'scripts/render-preview-blender.py'
+      - 'scripts/strip_glb_animations.py'
+      - 'scripts/report-preview-health.py'
       - '.github/workflows/generate-previews.yml'
       - '**/*.glb'
 
@@ -34,6 +36,7 @@ jobs:
             index.html
             scripts
             previews
+            reports
       - name: Node para montar catálogo completo
         uses: actions/setup-node@v4
         with:
@@ -50,12 +53,15 @@ jobs:
           python -m pip install 'Pillow>=10,<13'
       - name: Construir catálogo sem baixar os modelos
         run: node scripts/build-catalog.cjs
+      - name: Testar cópia temporária sem animações
+        run: python scripts/test_glb_fallback.py
       - name: Gerar somente miniaturas pendentes
         env:
           PREVIEW_LIMIT: '80'
         run: python scripts/generate-webp-previews.py
-      - name: Validar miniaturas e criar manifesto
+      - name: Validar miniaturas, medir qualidade e criar manifesto
         run: |
+          python scripts/report-preview-health.py
           node scripts/build-preview-manifest.cjs
           node scripts/test-site.cjs
       - name: Publicar apenas arquivos WebP e solicitar atualização do Pages
@@ -63,13 +69,14 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
-          git add previews/
+          git add previews/ reports/preview-quality.md reports/preview-quality.json
           if git diff --cached --quiet; then
             echo "Nenhuma miniatura nova; nenhum commit."
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m "assets: adicionar miniaturas WebP leves geradas de GLBs"
+          git commit -m "assets: validar miniaturas WebP e publicar relatório de qualidade"
+          git pull --rebase origin main
           git push origin HEAD:main
           gh workflow run pages-light.yml --ref main
