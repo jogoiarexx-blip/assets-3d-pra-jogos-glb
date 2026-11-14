@@ -1,0 +1,53 @@
+name: Auditar GLBs pesados (sem modificar originais)
+
+on:
+  workflow_dispatch:
+    inputs:
+      quantidade:
+        description: 'Quantidade dos maiores GLBs a auditar'
+        required: true
+        default: '12'
+        type: choice
+        options:
+          - '5'
+          - '12'
+          - '25'
+          - '62'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout apenas de metadados e scripts
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            catalogo.json
+            scripts
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Preparar catálogo e verificar auditor
+        run: |
+          node --check scripts/audit-glb.cjs
+          node scripts/build-catalog.cjs
+      - name: Inspecionar GLBs sem modificar arquivos
+        env:
+          AUDIT_LIMIT: ${{ inputs.quantidade }}
+        run: python scripts/audit-heavy-glbs.py
+      - name: Guardar relatório para baixar
+        uses: actions/upload-artifact@v4
+        with:
+          name: rexx-auditoria-glbs
+          path: |
+            audit-results.json
+            audit-results.md

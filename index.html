@@ -6,9 +6,9 @@
   <meta name="theme-color" content="#090f1d">
   <meta name="description" content="Catálogo organizado de modelos 3D GLB para jogos: prévias reais com textura, subpastas, filtros e downloads.">
   <title>REXX Assets — Biblioteca de modelos 3D</title>
-  <link rel="stylesheet" href="./style.css?v=4">
+  <link rel="stylesheet" href="./style.css?v=5">
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>
-  <script src="./app.js?v=4" defer></script>
+  <script src="./app.js?v=5" defer></script>
 </head>
 <body>
 <header class="topbar">
@@ -44,14 +44,14 @@
       <div class="toolbar">
         <span id="results" role="status">Carregando biblioteca...</span>
         <div class="toolbarcontrols">
-          <label class="previewtoggle" title="Gerar miniaturas reais com modelos 3D; pode consumir internet na primeira visita"><input id="autoPreview" type="checkbox" checked><span class="switch"></span> Prévias reais</label>
+          <label class="previewtoggle" title="Exibir miniaturas WebP leves; modelos sem miniatura só baixam com sua permissão"><input id="autoPreview" type="checkbox" checked><span class="switch"></span> Miniaturas WebP</label>
           <label class="sortlabel">Ordenar <select id="sort" aria-label="Ordenação dos arquivos"><option value="name">Nome A–Z</option><option value="size-small">Menor arquivo</option><option value="size-large">Maior arquivo</option><option value="format">Formato</option></select></label>
           <select id="kind" aria-label="Filtrar tipo de arquivo"><option value="all">Todos os formatos</option><option value="glb">GLB (3D)</option><option value="image">Imagens</option><option value="archive">ZIP / RAR</option></select>
         </div>
       </div>
       <div id="previewStatus" class="previewstatus" aria-live="polite"></div>
       <div id="grid" class="grid"></div>
-      <p class="footnote">Miniaturas dos GLBs são criadas a partir dos próprios arquivos, não são imagens ilustrativas. Para evitar downloads pesados, modelos acima de 18 MiB exigem clicar em <strong>Gerar prévia</strong>. Os arquivos originais ficam no GitHub e são baixados só quando necessários. O GitHub Pages publica somente a interface e o catálogo. Miniaturas geradas ficam salvas neste navegador. ZIP/RAR mostram apenas o tipo de arquivo.</p>
+      <p class="footnote">Miniaturas WebP são geradas a partir dos modelos reais durante a preparação do site. Quando uma miniatura ainda não existir, a opção <strong>Gerar prévia</strong> carrega apenas o modelo solicitado, sem downloads automáticos de GLBs na navegação. Os GLBs originais e seus links continuam no GitHub; o Pages publica a interface, catálogo e miniaturas leves. Prévias geradas manualmente ficam em cache neste navegador. ZIP/RAR mostram apenas o tipo de arquivo.</p>
     </div>
   </section>
 </main>

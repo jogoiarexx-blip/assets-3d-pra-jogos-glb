@@ -29,6 +29,10 @@ const normalize=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'')
 // Keep initial page light; heavy GLBs are previewed only on explicit request.
 const PAGE_SIZE=24;
 const AUTO_PREVIEW_MAX_BYTES=18*1024*1024;
+// SHA-addressed still images ship with the Pages site; original GLBs stay on GitHub.
+const staticPreviewHashes=new Set();
+function previewHash(a){return String(a.sha||'').slice(0,20).toLowerCase();}
+function staticPreviewUrl(a){return './previews/'+previewHash(a)+'.webp';}
 let visibleLimit=PAGE_SIZE;
 let all=[],category='all',sub='all',kind='all',sort='name',search='',current=null;
 let enabled=true,observer=null,previewQueue=[],working=false,previewFinished=0,previewErrors=0;
@@ -138,12 +142,27 @@ function renderSubs(){
   }
 }
 function statusText(){
-  if(!enabled){$('previewStatus').textContent='Prévias automáticas desativadas. Ative para gerar imagens reais dos GLBs.';return;}
+  if(!enabled){$('previewStatus').textContent='Miniaturas WebP ocultas. Você ainda pode solicitar prévias 3D manualmente.';return;}
   if(working||previewQueue.length){
     $('previewStatus').textContent='Gerando prévias reais, uma por vez • '+previewFinished+' concluídas'+(previewErrors?' • '+previewErrors+' sem prévia':'')+'.';
   }else if(previewFinished){
     $('previewStatus').textContent=previewFinished+' prévias reais carregadas ou geradas neste acesso'+(previewErrors?' • '+previewErrors+' não carregadas':'')+'.';
-  }else $('previewStatus').textContent='Miniaturas reais serão criadas ao aparecerem na tela; o primeiro acesso carrega os GLBs.';
+  }else $('previewStatus').textContent=staticPreviewHashes.size+' miniaturas WebP disponíveis • outros modelos têm prévia 3D sob demanda, sem downloads automáticos.';
+}
+function showManualPreview(stage,a){
+  const holder=document.createElement('div');holder.className='preview-manual';
+  const info=document.createElement('span');
+  info.textContent='Prévia 3D sob demanda • sem download automático';
+  const manual=makeButton('Gerar prévia','preview-on-demand',event=>{
+    event.stopPropagation();
+    stage.replaceChildren(document.createTextNode('Carregando prévia real...'));
+    preparePreview(a,stage,true);
+  });
+  holder.append(info,manual);stage.replaceChildren(holder);
+  // Reuse older real WebP thumbnails from this browser without loading a GLB.
+  getCached(previewKey(a)).then(cached=>{
+    if(cached&&stage.isConnected&&stage.contains(holder))showThumbnail(stage,cached,a);
+  }).catch(()=>{});
 }
 function makeCard(a){
   const card=document.createElement('article');card.className='asset';
@@ -154,25 +173,17 @@ function makeCard(a){
     const p=document.createElement('div');p.className='symbol archive-symbol';p.textContent='📦';stage.append(p);
   }else if(a.broken){
     const p=document.createElement('div');p.className='unavailable';p.textContent='⚠ Arquivo incompleto';stage.append(p);
+  }else if(enabled&&staticPreviewHashes.has(previewHash(a))){
+    const img=document.createElement('img');
+    img.src=staticPreviewUrl(a);img.loading='lazy';img.decoding='async';
+    img.alt='Miniatura WebP real de '+titleFor(a);
+    img.addEventListener('error',()=>{if(stage.isConnected)showManualPreview(stage,a);},{once:true});
+    stage.append(img);
   }else{
-    const automatic=enabled&&a.bytes<=AUTO_PREVIEW_MAX_BYTES;
-    if(automatic){
-      const p=document.createElement('div');p.className='preview-pending';p.textContent='Preparando prévia 3D...';stage.append(p);
-      queueObserve(thumb,a,stage);
-    }else{
-      const holder=document.createElement('div');holder.className='preview-manual';
-      const info=document.createElement('span');
-      info.textContent=a.bytes>AUTO_PREVIEW_MAX_BYTES?'Prévia sob demanda • arquivo grande':'Prévia automática desligada';
-      const manual=makeButton('Gerar prévia','preview-on-demand',event=>{
-        event.stopPropagation();
-        stage.replaceChildren(document.createTextNode('Carregando prévia real...'));
-        preparePreview(a,stage,true);
-      });
-      holder.append(info,manual);stage.append(holder);
-    }
+    showManualPreview(stage,a);
   }
   const badge=document.createElement('span');badge.className='typepill'+(a.broken?' invalid':'');badge.textContent=a.broken?'ARQUIVO INVÁLIDO':a.ext.toUpperCase();
-  const caption=document.createElement('span');caption.className='previewcaption';caption.textContent=isArchive(a)?'Pacote compactado':a.broken?'Reenvie este arquivo':isImage(a)?'Imagem original':(enabled&&a.bytes<=AUTO_PREVIEW_MAX_BYTES)?'Prévia do modelo real':'Modelo 3D • sob demanda';
+  const caption=document.createElement('span');caption.className='previewcaption';caption.textContent=isArchive(a)?'Pacote compactado':a.broken?'Reenvie este arquivo':isImage(a)?'Imagem original':(enabled&&staticPreviewHashes.has(previewHash(a)))?'Miniatura WebP leve':'Modelo 3D • sob demanda';
   thumb.append(stage,badge,caption);
   if(!a.broken)thumb.addEventListener('click',()=>openAsset(a));
   if(!a.broken){thumb.style.cursor='pointer';thumb.title='Abrir '+titleFor(a);}
@@ -413,7 +424,14 @@ window.addEventListener('popstate',()=>{readUrl();visibleLimit=PAGE_SIZE;render(
   $('autoPreview').checked=enabled;
   readUrl();
   try{
-    const response=await fetch('./catalogo.json?v=4',{cache:'no-store'});
+    const [response,previewsResponse]=await Promise.all([
+      fetch('./catalogo.json?v=5',{cache:'no-store'}),
+      fetch('./previews/manifest.json?v=5',{cache:'no-store'}).catch(()=>null)
+    ]);
+    if(previewsResponse&&previewsResponse.ok){
+      const manifest=await previewsResponse.json();
+      for(const sha of manifest.hashes||[]){if(/^[a-f0-9]{20}$/.test(sha))staticPreviewHashes.add(sha);}
+    }
     if(!response.ok)throw Error('HTTP '+response.status);
     all=await response.json();
     if(!Array.isArray(all))throw Error('Catálogo inválido');

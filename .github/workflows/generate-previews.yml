@@ -1,0 +1,74 @@
+name: Gerar miniaturas WebP reais (sem alterar GLBs)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/generate-webp-previews.py'
+      - 'scripts/render-preview-blender.py'
+      - '.github/workflows/generate-previews.yml'
+      - '**/*.glb'
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: rexx-assets-webp-generator
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 95
+    steps:
+      - name: Checkout leve com catálogo, scripts e miniaturas existentes
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            catalogo.json
+            app.js
+            index.html
+            scripts
+            previews
+      - name: Node para montar catálogo completo
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Python e Pillow para codificar WebP
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar Blender e renderizador sem tela
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends blender xvfb
+          python -m pip install 'Pillow>=10,<13'
+      - name: Construir catálogo sem baixar os modelos
+        run: node scripts/build-catalog.cjs
+      - name: Gerar somente miniaturas pendentes
+        env:
+          PREVIEW_LIMIT: '80'
+        run: python scripts/generate-webp-previews.py
+      - name: Validar miniaturas e criar manifesto
+        run: |
+          node scripts/build-preview-manifest.cjs
+          node scripts/test-site.cjs
+      - name: Publicar apenas arquivos WebP e solicitar atualização do Pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          git add previews/
+          if git diff --cached --quiet; then
+            echo "Nenhuma miniatura nova; nenhum commit."
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m "assets: adicionar miniaturas WebP leves geradas de GLBs"
+          git push origin HEAD:main
+          gh workflow run pages-light.yml --ref main

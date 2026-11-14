@@ -4,13 +4,13 @@
 
 ## Publicação leve
 
-O código do catálogo é publicado no GitHub Pages sem incluir nenhum GLB, ZIP ou RAR no artefato do site. Cada modelo original continua **em seu caminho canônico do repositório** `main`; prévias e downloads consultam o GitHub apenas quando solicitados. A publicação é feita pelo workflow [pages-light.yml](.github/workflows/pages-light.yml).
+O código do catálogo é publicado no GitHub Pages sem incluir nenhum GLB, ZIP ou RAR no artefato do site, agora com miniaturas WebP pequenas. Cada modelo original continua **em seu caminho canônico do repositório** `main`; prévias e downloads consultam o GitHub apenas quando solicitados. A publicação é feita pelo workflow [pages-light.yml](.github/workflows/pages-light.yml).
 
 O fluxo:
-1. Checkout esparso dos HTML, CSS, JS, JSON e script de geração (sem baixar binários).
+1. Checkout esparso dos HTML, CSS, JS, JSON, scripts e miniaturas WebP (sem baixar GLBs/ZIP/RAR).
 2. Verificação de sintaxe JS e consistência de nome, caminho, tamanho e SHA de cada item curado via `git ls-tree`.
 3. Descoberta automática de novos GLB, imagens e pacotes que ainda não estejam no catálogo. Arquivos da raiz novos aparecem na categoria **Novos envios / A classificar**.
-4. Geração de `_site/` com cinco arquivos estáticos, abaixo de 1 MiB.
+4. Geração de `_site/` com interface, catálogo e miniaturas WebP já renderizadas (limite de 20 MiB para o pacote publicado).
 5. Deploy com GitHub Actions para Pages.
 
 ### Configurar a origem de publicação
@@ -28,10 +28,18 @@ No repositório, acesse **Settings → Pages → Build and deployment → Source
 
 - 64 arquivos registrados manualmente, distribuídos em nove categorias originais, sem cópias binárias duplicadas no estado atual do repositório.
 - Novos arquivos são indexados no build sem necessidade de editar JSON. Para títulos/categorias definitivos, registre-os no `catalogo.json` com SHA e tamanho correspondentes.
-- Miniaturas GLB são renderizadas pelo `model-viewer`, uma por vez, e guardadas no IndexedDB do navegador.
-- GLBs acima de 18 MiB só recebem miniatura sob demanda; imagens WebP aparecem como imagem.
+- Miniaturas WebP versionadas pelo SHA do GLB são usadas como imagens leves (sem baixar modelos na rolagem). A ação `generate-previews.yml` gera as imagens reais a partir de uma cópia temporária dos GLBs, sem alterar seus arquivos de origem.
+- Para GLBs sem miniatura estática, o usuário pode gerar uma prévia real sob demanda com `model-viewer`; ela fica guardada no IndexedDB. Os GLBs nunca são baixados automaticamente ao navegar.
 - `car police.glb` tem 2 bytes, permanece marcado como danificado e não deve ser usado.
 
 ## Limitações e próximos passos
 
 O GitHub Pages tem limite documentado de 1 GB para o **site publicado** e o repositório de origem tem recomendação de 1 GB. Esta estratégia reduz o artefato publicado, mas **não reduz o tamanho do repositório Git nem seu histórico**. Para produção de alta demanda, considere armazenamento/CDN próprio para GLBs, com CORS e cache configurados, ou migrar arquivos para GitHub Releases (com testes de CORS e downloads). A renderização no navegador depende de WebGL, rede e acesso a `model-viewer`.
+
+## Otimização segura (auditoria, sem reescrever modelos)
+
+- Executar o workflow **Auditar GLBs pesados** (`audit-glbs.yml`) pelo Actions para inspecionar os maiores arquivos e baixar um relatório JSON/Markdown.
+- O auditor identifica vértices, triângulos aproximados, imagens embutidas, materiais, animações, skins e morph targets. Não altera nem publica nenhum GLB.
+- Uma redução futura deve preservar nome/caminho, texturas, estrutura de rig e comportamento das animações. Compare visualmente os arquivos otimizados **antes** de qualquer substituição; nenhuma substituição é automatizada aqui.
+- Para renderizar WebP, o workflow **Gerar miniaturas WebP** usa Blender em um executor temporário e publica apenas imagens pequenas em `previews/`. O SHA de cada modelo identifica sua miniatura. Modelos que falharem no render continuam disponíveis e com prévia manual.
+- O gerador solicita uma nova publicação do workflow Pages depois de gravar miniaturas (commits pelo `GITHUB_TOKEN` não acionam outros workflows `push` automaticamente).

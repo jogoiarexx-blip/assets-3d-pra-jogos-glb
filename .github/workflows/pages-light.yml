@@ -28,6 +28,10 @@ jobs:
             style.css
             catalogo.json
             scripts/build-catalog.cjs
+            scripts/build-preview-manifest.cjs
+            scripts/test-site.cjs
+            scripts/audit-glb.cjs
+            previews
           sparse-checkout-cone-mode: false
       - name: Configurar Node.js
         uses: actions/setup-node@v4
@@ -37,14 +41,17 @@ jobs:
         run: |
           node --check app.js
           node --check scripts/build-catalog.cjs
+          node --check scripts/build-preview-manifest.cjs
+          node --check scripts/audit-glb.cjs
           node scripts/build-catalog.cjs
+          node scripts/build-preview-manifest.cjs
+          node scripts/test-site.cjs
       - name: Montar pacote leve
         shell: bash
         run: |
           cp index.html app.js style.css _site/
           touch _site/.nojekyll
-          test "$(find _site -type f | wc -l)" -eq 5
-          test "$(du -sb _site | cut -f1)" -lt 1048576
+          test "$(du -sb _site | cut -f1)" -lt 20971520
           du -sh _site
           find _site -type f -print
       - name: Configurar GitHub Pages
