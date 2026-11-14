@@ -267,8 +267,17 @@ function failThumb(stage,reason,a){
   stage.replaceChildren(p);
 }
 function sleep(ms){return new Promise(resolve=>setTimeout(resolve,ms));}
+let modelViewerScriptRequested=false;
 async function waitForModelViewer(){
   if(customElements.get('model-viewer'))return;
+  if(!modelViewerScriptRequested){
+    modelViewerScriptRequested=true;
+    const script=document.createElement('script');
+    script.type='module';
+    script.src='https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js';
+    script.addEventListener('error',()=>{modelViewerScriptRequested=false;},{once:true});
+    document.head.append(script);
+  }
   await Promise.race([
     customElements.whenDefined('model-viewer'),
     new Promise((_,reject)=>setTimeout(()=>reject(new Error('Visualizador 3D não carregou')),12000))

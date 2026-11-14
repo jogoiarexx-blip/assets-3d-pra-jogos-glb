@@ -68,6 +68,7 @@ def main():
     pending = pending[:LIMIT]
     success = 0
     failed = []
+    consecutive_failures = 0
     print(f'{len(assets)} GLBs válidos, {len(pending)} miniaturas pendentes nesta execução.', flush=True)
     for number, asset in enumerate(pending, 1):
         name = asset['path']
@@ -77,18 +78,23 @@ def main():
                 glb = Path(temp) / 'model.glb'
                 png = Path(temp) / 'preview.png'
                 download(asset, glb)
-                command = ['xvfb-run', '-a', 'blender', '-b', '-t', '2', '--python',
+                command = ['xvfb-run', '-a', 'blender', '-b', '-t', '2', '--python-exit-code', '1', '--python',
                            'scripts/render-preview-blender.py', '--', str(glb), str(png)]
                 result = subprocess.run(command, capture_output=True, text=True, timeout=130)
-                if result.returncode != 0:
-                    raise RuntimeError((result.stderr + '\n' + result.stdout)[-1200:])
+                if result.returncode != 0 or not png.is_file():
+                    raise RuntimeError('Blender falhou (exit='+str(result.returncode)+'):\n'+(result.stdout+'\n'+result.stderr)[-2500:])
                 webp_from_png(png, final)
             success += 1
+            consecutive_failures = 0
             print(f'[{number}/{len(pending)}] OK {name}: {final.stat().st_size} bytes', flush=True)
         except Exception as ex:
             final.unlink(missing_ok=True)
             failed.append({'path': name, 'error': str(ex)[-450:]})
+            consecutive_failures += 1
             print(f'[{number}/{len(pending)}] FALHA {name}: {ex}', flush=True)
+            if consecutive_failures >= 3:
+                print('Parando após três falhas seguidas; verificar causa antes de baixar mais GLBs.', flush=True)
+                break
     print(json.dumps({'geradas': success, 'falhas': failed}, ensure_ascii=False, indent=2), flush=True)
     # Individual invalid models are not fatal: their 3D viewer remains usable on demand.
     if pending and success == 0:

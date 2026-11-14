@@ -6,9 +6,11 @@ from mathutils import Vector
 
 arguments = sys.argv[sys.argv.index('--') + 1:]
 source, output = map(str, arguments[:2])
-bpy.ops.wm.read_factory_settings(use_empty=True)
-bpy.ops.import_scene.gltf(filepath=source)
 scene = bpy.context.scene
+# Keep the valid startup scene, but remove its default objects.
+bpy.ops.object.select_all(action='SELECT')
+bpy.ops.object.delete(use_global=False)
+bpy.ops.import_scene.gltf(filepath=source)
 scene.frame_set(0)
 meshes = [obj for obj in scene.objects if obj.type == 'MESH' and not obj.hide_render]
 if not meshes:

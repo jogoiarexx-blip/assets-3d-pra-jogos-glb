@@ -17,5 +17,8 @@ for(const entry of fs.existsSync(source)?fs.readdirSync(source):[]){
   hashes.push(entry.slice(0,20));
 }
 hashes.sort();
-fs.writeFileSync(path.join(target,'manifest.json'),JSON.stringify({version:1,hashes},null,2)+'\n');
+const payload=JSON.stringify({version:1,hashes},null,2)+'\n';
+fs.writeFileSync(path.join(target,'manifest.json'),payload);
+// Persist the same manifest beside WebPs for repositories using branch-based Pages.
+if(fs.existsSync(source))fs.writeFileSync(path.join(source,'manifest.json'),payload);
 console.log('Miniaturas WebP publicadas: '+hashes.length);
