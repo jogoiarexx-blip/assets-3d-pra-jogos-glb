@@ -89,6 +89,7 @@ def main():
     success = 0
     failed = []
     consecutive_failures = 0
+    system_failures = 0
     print(f'{len(assets)} GLBs válidos, {len(pending)} miniaturas pendentes nesta execução.', flush=True)
     for number, asset in enumerate(pending, 1):
         name = asset['path']
@@ -117,15 +118,22 @@ def main():
         except Exception as ex:
             # Keep any previous thumbnail untouched until a replacement passes validation.
             failed.append({'path': name, 'error': str(ex)[-450:]})
-            consecutive_failures += 1
+            # A low-detail render is asset-specific: do not block Regina and other assets.
+            if 'Miniatura com pouco detalhe' in str(ex) or 'fallback estático:' in str(ex):
+                consecutive_failures = 0
+            else:
+                consecutive_failures += 1
+                system_failures += 1
             print(f'[{number}/{len(pending)}] FALHA {name}: {ex}', flush=True)
             if consecutive_failures >= 3:
-                print('Parando após três falhas seguidas; verificar causa antes de baixar mais GLBs.', flush=True)
+                print('Parando após três falhas sistêmicas seguidas.', flush=True)
                 break
     print(json.dumps({'geradas': success, 'falhas': failed}, ensure_ascii=False, indent=2), flush=True)
     # Individual invalid models are not fatal: their 3D viewer remains usable on demand.
+    if pending and success == 0 and system_failures >= 3:
+        raise SystemExit('Falha sistêmica do renderizador; conferir ambiente')
     if pending and success == 0:
-        raise SystemExit('Nenhuma miniatura gerada; verifique o log do Blender')
+        print('Aviso: nenhuma miniatura nova passou no controle de qualidade. Publicando diagnóstico.',flush=True)
 
 if __name__ == '__main__':
     main()
