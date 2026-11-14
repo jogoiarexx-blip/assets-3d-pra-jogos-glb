@@ -1,0 +1,506 @@
+[
+  {
+    "path": "assets/veiculos/utilitarios/caminhonete velha.glb",
+    "bytes": 25944236,
+    "meshes": 1,
+    "primitives": 1,
+    "estimatedTriangles": 611368,
+    "positionAccessorVertices": 340576,
+    "morphTargets": 0,
+    "skins": 0,
+    "animations": 0,
+    "animationChannels": 0,
+    "materials": 1,
+    "textures": 3,
+    "images": [
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 3032925,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 2419467,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 2254744,
+        "external": false
+      }
+    ],
+    "embeddedTextureBytes": 7707136,
+    "extensionsUsed": [],
+    "extensionsRequired": [],
+    "safety": {
+      "keepOriginalUntilVisualAndAnimationComparison": true,
+      "preserveSkinsAnimationsAndMorphTargets": true,
+      "preserveTextureAppearanceAndUVs": true,
+      "note": "Números geométricos são aproximações; análise não modifica o GLB."
+    },
+    "sha": "db070ae95f20a21f7443f8cf7cd7e17fa4bcbb74",
+    "weightMiB": 24.74
+  },
+  {
+    "path": "mulher de vestido.glb",
+    "bytes": 24265648,
+    "meshes": 1,
+    "primitives": 1,
+    "estimatedTriangles": 527172,
+    "positionAccessorVertices": 306801,
+    "morphTargets": 0,
+    "skins": 0,
+    "animations": 0,
+    "animationChannels": 0,
+    "materials": 1,
+    "textures": 3,
+    "images": [
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 2489190,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 1647308,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 3983077,
+        "external": false
+      }
+    ],
+    "embeddedTextureBytes": 8119575,
+    "extensionsUsed": [],
+    "extensionsRequired": [],
+    "safety": {
+      "keepOriginalUntilVisualAndAnimationComparison": true,
+      "preserveSkinsAnimationsAndMorphTargets": true,
+      "preserveTextureAppearanceAndUVs": true,
+      "note": "Números geométricos são aproximações; análise não modifica o GLB."
+    },
+    "sha": "0c2427ae61803b381925ddf5e64cfb05a4a37458",
+    "weightMiB": 23.14
+  },
+  {
+    "path": "dra-medica-otimizada.glb",
+    "bytes": 23949260,
+    "meshes": 1,
+    "primitives": 1,
+    "estimatedTriangles": 1008748,
+    "positionAccessorVertices": 526492,
+    "morphTargets": 0,
+    "skins": 0,
+    "animations": 0,
+    "animationChannels": 0,
+    "materials": 1,
+    "textures": 3,
+    "images": [
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 883297,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 311342,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 644289,
+        "external": false
+      }
+    ],
+    "embeddedTextureBytes": 1838928,
+    "extensionsUsed": [],
+    "extensionsRequired": [],
+    "safety": {
+      "keepOriginalUntilVisualAndAnimationComparison": true,
+      "preserveSkinsAnimationsAndMorphTargets": true,
+      "preserveTextureAppearanceAndUVs": true,
+      "note": "Números geométricos são aproximações; análise não modifica o GLB."
+    },
+    "sha": "09421658c20b74e5ca898c113ed9a4057b2555d8",
+    "weightMiB": 22.84
+  },
+  {
+    "path": "assets/criaturas/monstros/Meshy_AI_Clown_Cream_Carnage_1022153923_texture.glb",
+    "bytes": 23764204,
+    "meshes": 1,
+    "primitives": 1,
+    "estimatedTriangles": 449824,
+    "positionAccessorVertices": 268152,
+    "morphTargets": 0,
+    "skins": 0,
+    "animations": 0,
+    "animationChannels": 0,
+    "materials": 1,
+    "textures": 3,
+    "images": [
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 4018161,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 2699865,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 3065154,
+        "external": false
+      }
+    ],
+    "embeddedTextureBytes": 9783180,
+    "extensionsUsed": [],
+    "extensionsRequired": [],
+    "safety": {
+      "keepOriginalUntilVisualAndAnimationComparison": true,
+      "preserveSkinsAnimationsAndMorphTargets": true,
+      "preserveTextureAppearanceAndUVs": true,
+      "note": "Números geométricos são aproximações; análise não modifica o GLB."
+    },
+    "sha": "4a5f0975e4ae55d87e50b48e2f86b5c87fb95a00",
+    "weightMiB": 22.66
+  },
+  {
+    "path": "glock-otimizada.glb",
+    "bytes": 23629060,
+    "meshes": 1,
+    "primitives": 1,
+    "estimatedTriangles": 866323,
+    "positionAccessorVertices": 521935,
+    "morphTargets": 0,
+    "skins": 0,
+    "animations": 0,
+    "animationChannels": 0,
+    "materials": 1,
+    "textures": 3,
+    "images": [
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 634707,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 228493,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 2451106,
+        "external": false
+      }
+    ],
+    "embeddedTextureBytes": 3314306,
+    "extensionsUsed": [],
+    "extensionsRequired": [],
+    "safety": {
+      "keepOriginalUntilVisualAndAnimationComparison": true,
+      "preserveSkinsAnimationsAndMorphTargets": true,
+      "preserveTextureAppearanceAndUVs": true,
+      "note": "Números geométricos são aproximações; análise não modifica o GLB."
+    },
+    "sha": "01d228389c46d4a34d9bc216856c9ba7398730f9",
+    "weightMiB": 22.53
+  },
+  {
+    "path": "assets/veiculos/utilitarios/Van_Rustica_Otimizada_23MB.glb",
+    "bytes": 22975456,
+    "meshes": 1,
+    "primitives": 1,
+    "estimatedTriangles": 383582,
+    "positionAccessorVertices": 292051,
+    "morphTargets": 0,
+    "skins": 0,
+    "animations": 0,
+    "animationChannels": 0,
+    "materials": 1,
+    "textures": 3,
+    "images": [
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 2468183,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 1979072,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 4577481,
+        "external": false
+      }
+    ],
+    "embeddedTextureBytes": 9024736,
+    "extensionsUsed": [],
+    "extensionsRequired": [],
+    "safety": {
+      "keepOriginalUntilVisualAndAnimationComparison": true,
+      "preserveSkinsAnimationsAndMorphTargets": true,
+      "preserveTextureAppearanceAndUVs": true,
+      "note": "Números geométricos são aproximações; análise não modifica o GLB."
+    },
+    "sha": "b79b2c9d8b0aee8a5072020bf5f7650dc6b608d8",
+    "weightMiB": 21.91
+  },
+  {
+    "path": "zombie.glb",
+    "bytes": 22620960,
+    "meshes": 1,
+    "primitives": 1,
+    "estimatedTriangles": 477737,
+    "positionAccessorVertices": 271351,
+    "morphTargets": 0,
+    "skins": 0,
+    "animations": 0,
+    "animationChannels": 0,
+    "materials": 1,
+    "textures": 3,
+    "images": [
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 2578983,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 1882805,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 3740720,
+        "external": false
+      }
+    ],
+    "embeddedTextureBytes": 8202508,
+    "extensionsUsed": [],
+    "extensionsRequired": [],
+    "safety": {
+      "keepOriginalUntilVisualAndAnimationComparison": true,
+      "preserveSkinsAnimationsAndMorphTargets": true,
+      "preserveTextureAppearanceAndUVs": true,
+      "note": "Números geométricos são aproximações; análise não modifica o GLB."
+    },
+    "sha": "c7537199eafcd139dac5d0bba50fe805131a8645",
+    "weightMiB": 21.57
+  },
+  {
+    "path": "MP5.glb",
+    "bytes": 22415772,
+    "meshes": 1,
+    "primitives": 1,
+    "estimatedTriangles": 458305,
+    "positionAccessorVertices": 258714,
+    "morphTargets": 0,
+    "skins": 0,
+    "animations": 0,
+    "animationChannels": 0,
+    "materials": 1,
+    "textures": 3,
+    "images": [
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 1957912,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 2644159,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 4032830,
+        "external": false
+      }
+    ],
+    "embeddedTextureBytes": 8634901,
+    "extensionsUsed": [],
+    "extensionsRequired": [],
+    "safety": {
+      "keepOriginalUntilVisualAndAnimationComparison": true,
+      "preserveSkinsAnimationsAndMorphTargets": true,
+      "preserveTextureAppearanceAndUVs": true,
+      "note": "Números geométricos são aproximações; análise não modifica o GLB."
+    },
+    "sha": "122d124f35a635d7178257a6dd0d1afa4a21956e",
+    "weightMiB": 21.38
+  },
+  {
+    "path": "assets/veiculos/carros/fusca.glb",
+    "bytes": 20711128,
+    "meshes": 1,
+    "primitives": 1,
+    "estimatedTriangles": 473766,
+    "positionAccessorVertices": 252618,
+    "morphTargets": 0,
+    "skins": 0,
+    "animations": 0,
+    "animationChannels": 0,
+    "materials": 1,
+    "textures": 3,
+    "images": [
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 2813018,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 2044360,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 2082464,
+        "external": false
+      }
+    ],
+    "embeddedTextureBytes": 6939842,
+    "extensionsUsed": [],
+    "extensionsRequired": [],
+    "safety": {
+      "keepOriginalUntilVisualAndAnimationComparison": true,
+      "preserveSkinsAnimationsAndMorphTargets": true,
+      "preserveTextureAppearanceAndUVs": true,
+      "note": "Números geométricos são aproximações; análise não modifica o GLB."
+    },
+    "sha": "0a2ba75d13c7e8b0dadfb36a6cb6443cf01a05d6",
+    "weightMiB": 19.75
+  },
+  {
+    "path": "assets/personagens/outros/velho 2.glb",
+    "bytes": 18787016,
+    "meshes": 1,
+    "primitives": 1,
+    "estimatedTriangles": 312554,
+    "positionAccessorVertices": 170536,
+    "morphTargets": 0,
+    "skins": 1,
+    "animations": 2,
+    "animationChannels": 384,
+    "materials": 1,
+    "textures": 3,
+    "images": [
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 1810583,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 2662541,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 1398704,
+        "external": false
+      }
+    ],
+    "embeddedTextureBytes": 5871828,
+    "extensionsUsed": [],
+    "extensionsRequired": [],
+    "safety": {
+      "keepOriginalUntilVisualAndAnimationComparison": true,
+      "preserveSkinsAnimationsAndMorphTargets": true,
+      "preserveTextureAppearanceAndUVs": true,
+      "note": "Números geométricos são aproximações; análise não modifica o GLB."
+    },
+    "sha": "42c72ccded25af80c9b274b47438886c5fdeb93f",
+    "weightMiB": 17.92
+  },
+  {
+    "path": "assets/veiculos/carros/Meshy_AI_Vintage_Drive_1102074902_texture.glb",
+    "bytes": 18722212,
+    "meshes": 1,
+    "primitives": 1,
+    "estimatedTriangles": 353532,
+    "positionAccessorVertices": 243632,
+    "morphTargets": 0,
+    "skins": 0,
+    "animations": 0,
+    "animationChannels": 0,
+    "materials": 1,
+    "textures": 3,
+    "images": [
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 2547739,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 1662931,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 2470693,
+        "external": false
+      }
+    ],
+    "embeddedTextureBytes": 6681363,
+    "extensionsUsed": [],
+    "extensionsRequired": [],
+    "safety": {
+      "keepOriginalUntilVisualAndAnimationComparison": true,
+      "preserveSkinsAnimationsAndMorphTargets": true,
+      "preserveTextureAppearanceAndUVs": true,
+      "note": "Números geométricos são aproximações; análise não modifica o GLB."
+    },
+    "sha": "90dab7c19238d7adfa72848601c197504f92b62f",
+    "weightMiB": 17.85
+  },
+  {
+    "path": "assets/natureza/plantas/Meshy_AI_Vallisneria_1101183850_texture.glb",
+    "bytes": 18211284,
+    "meshes": 1,
+    "primitives": 1,
+    "estimatedTriangles": 314294,
+    "positionAccessorVertices": 187268,
+    "morphTargets": 0,
+    "skins": 0,
+    "animations": 0,
+    "animationChannels": 0,
+    "materials": 1,
+    "textures": 3,
+    "images": [
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 3864582,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 1878854,
+        "external": false
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bytes": 2701439,
+        "external": false
+      }
+    ],
+    "embeddedTextureBytes": 8444875,
+    "extensionsUsed": [],
+    "extensionsRequired": [],
+    "safety": {
+      "keepOriginalUntilVisualAndAnimationComparison": true,
+      "preserveSkinsAnimationsAndMorphTargets": true,
+      "preserveTextureAppearanceAndUVs": true,
+      "note": "Números geométricos são aproximações; análise não modifica o GLB."
+    },
+    "sha": "c6110a8dd3e8aecf1dc5dba9ea7ff60ff3a8af4c",
+    "weightMiB": 17.37
+  }
+]
